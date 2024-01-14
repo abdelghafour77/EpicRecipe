@@ -1,0 +1,38 @@
+version: '3'
+services:
+
+  database:
+    image: mysql:8.2.0
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_DATABASE=epicrecipe
+    ports:
+      - 127.0.0.1:3306:3306
+    command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8mb4 --explicit_defaults_for_timestamp
+    healthcheck:
+      test: [ 'CMD', 'mysql', '-e', 'SHOW DATABASES;' ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: /backend
+    depends_on:
+      - database
+    environment:
+      - DATABASE_HOST=database
+      - SPRING_DATASOURCE_URL=jdbc:mysql://database:3306/epicrecipe
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - "8081:8081"
+
+  frontend:
+    build:
+      context: /frontend
+    depends_on:
+      - backend
+    ports:
+      - "4200:80"
