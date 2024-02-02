@@ -25,7 +25,7 @@ spring:
         globally_quoted_identifiers: true
         format_sql: false
   liquibase:
-    enabled: false
+    enabled: true
     change-log: db/changelog/db.changelog-master.yaml
 
 application:

@@ -1,22 +1,39 @@
 package org.example.epicrecipe.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+
+import jakarta.persistence.*;
 import org.example.epicrecipe.entities.enums.Role;
 
+import java.util.List;
+import java.util.UUID;
+
 @Entity
-@Getter
-@Setter
+@Data
 public class User {
-    @Id @GeneratedValue
-    private Long id;
-    private String firstName;
-    private String lastName;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+
+    private String username;
     private String email;
     private String password;
 
-    private Role role;
+    @OneToMany(mappedBy = "user")
+    private List<Comment> comments;
+
+    @OneToMany(mappedBy = "user")
+    private List<Favorite> favorites;
+
+    @OneToMany(mappedBy = "user")
+    private List<SearchHistory> searchHistory;
+
+    @ElementCollection(targetClass = Role.class)
+    @Enumerated(EnumType.STRING)
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "role")
+    private List<Role> roles;
+
 }
+

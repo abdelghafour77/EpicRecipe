@@ -1,29 +1,40 @@
 package org.example.epicrecipe.entities;
+import lombok.Data;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.*;
+import java.util.List;
 
-@Getter
-@Setter
 @Entity
+@Data
 public class Recipe {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String title;
 
-    private String description;
+    @ManyToMany
+    @JoinTable(name = "recipe_tags",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    private List<Tag> tags;
 
-    private String ingredients;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
-    private String instructions;
+    @OneToMany(mappedBy = "recipe")
+    private List<Comment> comments;
 
-    private String category;
+    @OneToMany(mappedBy = "recipe")
+    private List<Favorite> favorites;
 
-    private String image;
+    @ManyToMany
+    @JoinTable(name = "recipe_ingredients",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
+    private List<Ingredient> ingredients;
+
+    // Other properties and methods
 }

@@ -1,0 +1,383 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1706873128751-1
+      author: hp (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_category
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+            tableName: category
+  - changeSet:
+      id: 1706873128751-2
+      author: hp (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_comment
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: content
+                  type: VARCHAR(255)
+              - column:
+                  name: user_id
+                  type: binary(16)
+              - column:
+                  name: recipe_id
+                  type: BIGINT
+            tableName: comment
+  - changeSet:
+      id: 1706873128751-3
+      author: hp (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_favorite
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: user_id
+                  type: binary(16)
+              - column:
+                  name: recipe_id
+                  type: BIGINT
+            tableName: favorite
+  - changeSet:
+      id: 1706873128751-4
+      author: hp (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_ingredient
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+            tableName: ingredient
+  - changeSet:
+      id: 1706873128751-5
+      author: hp (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_recipe
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: title
+                  type: VARCHAR(255)
+              - column:
+                  name: category_id
+                  type: BIGINT
+            tableName: recipe
+  - changeSet:
+      id: 1706873128751-6
+      author: hp (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: ingredient_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: recipe_id
+                  type: BIGINT
+            tableName: recipe_ingredients
+  - changeSet:
+      id: 1706873128751-7
+      author: hp (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_recipesteps
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: recipe_id
+                  type: BIGINT
+              - column:
+                  name: step
+                  type: VARCHAR(255)
+            tableName: recipe_steps
+  - changeSet:
+      id: 1706873128751-8
+      author: hp (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: recipe_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: tag_id
+                  type: BIGINT
+            tableName: recipe_tags
+  - changeSet:
+      id: 1706873128751-9
+      author: hp (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_searchhistory
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: user_id
+                  type: binary(16)
+              - column:
+                  name: search_term
+                  type: VARCHAR(255)
+              - column:
+                  name: timestamp
+                  type: DATETIME
+            tableName: search_history
+  - changeSet:
+      id: 1706873128751-10
+      author: hp (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_tag
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+            tableName: tag
+  - changeSet:
+      id: 1706873128751-11
+      author: hp (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_user
+                  name: id
+                  type: binary(16)
+              - column:
+                  name: username
+                  type: VARCHAR(255)
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  name: password
+                  type: VARCHAR(255)
+            tableName: user
+  - changeSet:
+      id: 1706873128751-12
+      author: hp (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_id
+                  type: binary(16)
+              - column:
+                  name: role
+                  type: VARCHAR(255)
+            tableName: user_roles
+  - changeSet:
+      id: 1706873128751-13
+      author: hp (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: recipe_id
+            baseTableName: comment
+            constraintName: FK_COMMENT_ON_RECIPE
+            referencedColumnNames: id
+            referencedTableName: recipe
+  - changeSet:
+      id: 1706873128751-14
+      author: hp (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: comment
+            constraintName: FK_COMMENT_ON_USER
+            referencedColumnNames: id
+            referencedTableName: user
+  - changeSet:
+      id: 1706873128751-15
+      author: hp (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: recipe_id
+            baseTableName: favorite
+            constraintName: FK_FAVORITE_ON_RECIPE
+            referencedColumnNames: id
+            referencedTableName: recipe
+  - changeSet:
+      id: 1706873128751-16
+      author: hp (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: favorite
+            constraintName: FK_FAVORITE_ON_USER
+            referencedColumnNames: id
+            referencedTableName: user
+  - changeSet:
+      id: 1706873128751-17
+      author: hp (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: recipe_id
+            baseTableName: recipe_steps
+            constraintName: FK_RECIPESTEPS_ON_RECIPE
+            referencedColumnNames: id
+            referencedTableName: recipe
+  - changeSet:
+      id: 1706873128751-18
+      author: hp (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: category_id
+            baseTableName: recipe
+            constraintName: FK_RECIPE_ON_CATEGORY
+            referencedColumnNames: id
+            referencedTableName: category
+  - changeSet:
+      id: 1706873128751-19
+      author: hp (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: search_history
+            constraintName: FK_SEARCHHISTORY_ON_USER
+            referencedColumnNames: id
+            referencedTableName: user
+  - changeSet:
+      id: 1706873128751-20
+      author: hp (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: ingredient_id
+            baseTableName: recipe_ingredients
+            constraintName: fk_recing_on_ingredient
+            referencedColumnNames: id
+            referencedTableName: ingredient
+  - changeSet:
+      id: 1706873128751-21
+      author: hp (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: recipe_id
+            baseTableName: recipe_ingredients
+            constraintName: fk_recing_on_recipe
+            referencedColumnNames: id
+            referencedTableName: recipe
+  - changeSet:
+      id: 1706873128751-22
+      author: hp (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: recipe_id
+            baseTableName: recipe_tags
+            constraintName: fk_rectag_on_recipe
+            referencedColumnNames: id
+            referencedTableName: recipe
+  - changeSet:
+      id: 1706873128751-23
+      author: hp (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: tag_id
+            baseTableName: recipe_tags
+            constraintName: fk_rectag_on_tag
+            referencedColumnNames: id
+            referencedTableName: tag
+  - changeSet:
+      id: 1706873128751-24
+      author: hp (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: user_roles
+            constraintName: fk_user_roles_on_user
+            referencedColumnNames: id
+            referencedTableName: user
+

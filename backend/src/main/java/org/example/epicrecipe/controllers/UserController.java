@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/users")
@@ -32,12 +33,12 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public User updateUser(Long id, User user) {
+    public User updateUser(UUID id, User user) {
         return service.updateUser(id, user);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable Long id) {
+    public void deleteUser(@PathVariable UUID id) {
         service.deleteUser(id);
     }
 

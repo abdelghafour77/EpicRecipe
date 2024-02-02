@@ -4,6 +4,7 @@ import org.example.epicrecipe.entities.User;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public interface UserService {
 
@@ -13,9 +14,9 @@ public interface UserService {
 
     User saveUser(User user);
 
-    User updateUser(Long id, User user);
+    User updateUser(UUID id, User user);
 
-    void deleteUser(Long id);
+    void deleteUser(UUID id);
 
 
 }

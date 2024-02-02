@@ -21,8 +21,8 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
-    public Optional<Recipe> getRecipeByName(String name) {
-        return repository.findByName(name);
+    public Optional<Recipe> getRecipeByTitle(String title) {
+        return repository.findByTitle(title);
     }
 
     @Override

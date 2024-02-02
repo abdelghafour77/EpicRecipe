@@ -27,9 +27,9 @@ public class RecipeController {
         return service.getRecipeById(id);
     }
 
-    @GetMapping("/name/{name}")
-    public Optional<Recipe> getRecipeByName(@PathVariable String name) {
-        return service.getRecipeByName(name);
+    @GetMapping("/title/{title}")
+    public Optional<Recipe> getRecipeByTitle(@PathVariable String title) {
+        return service.getRecipeByTitle(title);
     }
 
     @PostMapping()
