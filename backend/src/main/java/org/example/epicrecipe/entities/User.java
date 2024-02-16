@@ -2,17 +2,21 @@ package org.example.epicrecipe.entities;
 import lombok.Data;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.example.epicrecipe.entities.enums.Role;
 
 import java.util.List;
+import java.util.UUID;
 
 @Entity
-@Data
+@Getter
+@Setter
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     private String username;
     private String email;
