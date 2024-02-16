@@ -24,6 +24,12 @@ spring:
 #        dialect: org.hibernate.dialect.MySQL8Dialect
         globally_quoted_identifiers: true
         format_sql: false
+  sql:
+    init:
+#      set this to always if you want to initialize the database with the data.sql file
+      mode: never
+      platform: mysql
+      data-locations: classpath:data.sql
   liquibase:
     enabled: true
     change-log: db/changelog/db.changelog-master.yaml
