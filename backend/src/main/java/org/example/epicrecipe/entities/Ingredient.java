@@ -1,11 +1,17 @@
 package org.example.epicrecipe.entities;
-import lombok.Data;
+import lombok.*;
 
 import jakarta.persistence.*;
+import org.example.epicrecipe.entities.enums.UnityType;
+
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Ingredient {
 
     @Id
@@ -13,6 +19,9 @@ public class Ingredient {
     private Long id;
 
     private String name;
+
+    @Enumerated(EnumType.STRING)
+    private UnityType unityType;
 
     @ManyToMany(mappedBy = "ingredients")
     private List<Recipe> recipes;
