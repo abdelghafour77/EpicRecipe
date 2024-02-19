@@ -1,5 +1,5 @@
 --\       Ingredient       /--
-INSERT INTO Ingredient (name, unity_type)
+INSERT INTO ingredient (name, unity_type)
 VALUES ('Flour', 'GRAM'),
        ('Sugar', 'GRAM'),
        ('Salt', 'GRAM'),
