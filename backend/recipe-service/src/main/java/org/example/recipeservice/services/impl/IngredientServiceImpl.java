@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.example.recipeservice.dtos.requests.RequestIngredient;
 import org.example.recipeservice.dtos.responses.ResponseIngredient;
 import org.example.recipeservice.entities.Ingredient;
+import org.example.recipeservice.mappers.IngredientMapper;
 import org.example.recipeservice.repository.IngredientRepository;
 import org.example.recipeservice.services.IngredientService;
 import org.springframework.stereotype.Service;
@@ -16,30 +17,29 @@ import java.util.List;
 public class IngredientServiceImpl implements IngredientService {
 
     private final IngredientRepository repository;
+    private final IngredientMapper mapper;
 
     @Override
     public List<ResponseIngredient> getIngredients() {
         List<Ingredient> ingredients = repository.findAll();
         List<ResponseIngredient> responseIngredients = new ArrayList<>();
         for (Ingredient ingredient : ingredients) {
-            responseIngredients.add(ResponseIngredient.builder()
-                    .unityType(ingredient.getUnityType())
-                    .name(ingredient.getName())
-                    .build());
+            responseIngredients.add(mapper.toResponseIngredient(ingredient));
         }
         return responseIngredients;
+
+    }
+
+    @Override
+    public ResponseIngredient getIngredientById(Long id) {
+        Ingredient ingredient = repository.findById(id).get();
+        return mapper.toResponseIngredient(ingredient);
     }
 
     @Override
     public ResponseIngredient saveIngredient(RequestIngredient ingredient) {
-        Ingredient ingredientToSave = Ingredient.builder()
-                .name(ingredient.getName())
-                .unityType(ingredient.getUnityType())
-                .build();
-        return ResponseIngredient.builder()
-                .name(repository.save(ingredientToSave).getName())
-                .unityType(repository.save(ingredientToSave).getUnityType())
-                .build();
+        Ingredient ingredientToSave = mapper.toIngredient(ingredient);
+        return mapper.toResponseIngredient(repository.save(ingredientToSave));
     }
 
 
@@ -48,10 +48,7 @@ public class IngredientServiceImpl implements IngredientService {
         Ingredient ingredientToUpdate = repository.findById(id).get();
         ingredientToUpdate.setName(ingredient.getName());
         ingredientToUpdate.setUnityType(ingredient.getUnityType());
-        return ResponseIngredient.builder()
-                .name(repository.save(ingredientToUpdate).getName())
-                .unityType(repository.save(ingredientToUpdate).getUnityType())
-                .build();
+        return mapper.toResponseIngredient(repository.save(ingredientToUpdate));
     }
 
     @Override
