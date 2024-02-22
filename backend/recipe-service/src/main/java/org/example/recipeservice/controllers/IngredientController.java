@@ -22,6 +22,11 @@ public class IngredientController {
         return ResponseEntity.ok().body(service.getIngredients());
     }
 
+    @GetMapping("{id}")
+    public ResponseEntity<ResponseIngredient> getIngredientById(@PathVariable Long id) {
+        return ResponseEntity.ok().body(service.getIngredientById(id));
+    }
+
     @PostMapping("/save")
     public ResponseEntity<ResponseIngredient> saveIngredient(@RequestBody RequestIngredient ingredient) {
         return ResponseEntity.ok().body(service.saveIngredient(ingredient));
