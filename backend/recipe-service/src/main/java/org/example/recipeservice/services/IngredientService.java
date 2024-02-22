@@ -9,6 +9,8 @@ public interface IngredientService {
 
     List<ResponseIngredient> getIngredients();
 
+    ResponseIngredient getIngredientById(Long id);
+
     ResponseIngredient saveIngredient(RequestIngredient ingredient);
 
     ResponseIngredient updateIngredient(Long id, RequestIngredient ingredient);
