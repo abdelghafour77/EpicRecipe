@@ -9,12 +9,12 @@ public interface CategoryService {
 
     List<ResponseCategory> getAllCategories();
 
-    ResponseCategory getCategoryById(int id);
+    ResponseCategory getCategoryById(Long id);
 
-    ResponseCategory addCategory(RequestCategory category);
+    ResponseCategory saveCategory(RequestCategory category);
 
-    ResponseCategory updateCategory(int id, RequestCategory category);
+    ResponseCategory updateCategory(Long id, RequestCategory category);
 
-    void deleteCategory(int id);
+    void deleteCategory(Long id);
 
 }
