@@ -1,9 +1,10 @@
-package org.example.recipeservice.services.impl;
+package org.example.accountservice.services.impl;
 
 import lombok.AllArgsConstructor;
-import org.example.recipeservice.entities.User;
-import org.example.recipeservice.repository.UserRepository;
-import org.example.recipeservice.services.UserService;
+import org.example.accountservice.services.UserService;
+import org.example.accountservice.entities.User;
+import org.example.accountservice.repository.UserRepository;
+import org.example.accountservice.services.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

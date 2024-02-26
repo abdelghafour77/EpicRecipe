@@ -1,9 +1,11 @@
-package org.example.recipeservice.controllers;
+package org.example.accountservice.controllers;
+
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.example.recipeservice.entities.User;
-import org.example.recipeservice.services.UserService;
+
+import org.example.accountservice.entities.User;
+import org.example.accountservice.services.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

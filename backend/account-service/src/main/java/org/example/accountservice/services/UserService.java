@@ -1,6 +1,6 @@
-package org.example.recipeservice.services;
+package org.example.accountservice.services;
 
-import org.example.recipeservice.entities.User;
+import org.example.accountservice.entities.User;
 
 import java.util.List;
 import java.util.Optional;

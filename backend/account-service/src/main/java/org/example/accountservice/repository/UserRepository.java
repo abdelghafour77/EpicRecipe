@@ -1,6 +1,6 @@
-package org.example.recipeservice.repository;
+package org.example.accountservice.repository;
 
-import org.example.recipeservice.entities.User;
+import org.example.accountservice.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

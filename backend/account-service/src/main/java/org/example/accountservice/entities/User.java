@@ -1,9 +1,12 @@
-package org.example.recipeservice.entities;
+package org.example.accountservice.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.example.recipeservice.entities.enums.Role;
+import org.example.accountservice.entities.enums.Role;
+import org.example.accountservice.model.Comment;
+import org.example.accountservice.model.Favorite;
+import org.example.accountservice.model.SearchHistory;
 
 import java.util.List;
 import java.util.UUID;
@@ -36,5 +39,4 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<SearchHistory> searchHistory;
 
-    // Constructors, getters, setters, etc.
 }
