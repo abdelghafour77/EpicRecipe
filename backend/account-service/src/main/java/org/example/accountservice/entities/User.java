@@ -4,12 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.example.accountservice.entities.enums.Role;
-import org.example.accountservice.model.Comment;
-import org.example.accountservice.model.Favorite;
-import org.example.accountservice.model.SearchHistory;
 
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Getter
@@ -17,10 +13,11 @@ import java.util.UUID;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private String username;
+    private String firstName;
+    private String lastName;
     private String email;
     private String password;
 
@@ -30,13 +27,13 @@ public class User {
     @Column(name = "role")
     private List<Role> roles;
 
-    @OneToMany(mappedBy = "user")
-    private List<Comment> comments;
-
-    @OneToMany(mappedBy = "user")
-    private List<Favorite> favorites;
-
-    @OneToMany(mappedBy = "user")
-    private List<SearchHistory> searchHistory;
+//    @Transient
+//    private List<Comment> comments;
+//
+//    @Transient
+//    private List<Favorite> favorites;
+//
+//    @Transient
+//    private List<SearchHistory> searchHistory;
 
 }

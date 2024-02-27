@@ -23,8 +23,8 @@ public class Ingredient {
     @Enumerated(EnumType.STRING)
     private UnityType unityType;
 
-    @ManyToMany(mappedBy = "ingredients")
-    private List<Recipe> recipes;
+//    @ManyToMany(mappedBy = "ingredients")
+//    private List<Recipe> recipes;
 
     // Constructors, getters, setters, etc.
 }

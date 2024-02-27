@@ -4,7 +4,6 @@ import org.example.accountservice.entities.User;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 public interface UserService {
 
@@ -12,11 +11,13 @@ public interface UserService {
 
     List<User> getAllUsers();
 
+    Optional<User> getUserById(Long id);
+
     User saveUser(User user);
 
-    User updateUser(UUID id, User user);
+    User updateUser(Long id, User user);
 
-    void deleteUser(UUID id);
+    void deleteUser(Long id);
 
 
 }

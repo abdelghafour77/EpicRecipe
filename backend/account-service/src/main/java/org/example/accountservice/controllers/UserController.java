@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/users")
@@ -24,6 +23,11 @@ public class UserController {
         return service.getAllUsers();
     }
 
+    @GetMapping("/{id}")
+    public Optional<User> getUserById(@PathVariable Long id) {
+        return service.getUserById(id);
+    }
+
     @GetMapping("/email/{email}")
     public Optional<User> getUserByEmail(@PathVariable String email) {
         return service.getUserByEmail(email);
@@ -35,12 +39,12 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public User updateUser(UUID id, User user) {
+    public User updateUser(Long id, User user) {
         return service.updateUser(id, user);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable UUID id) {
+    public void deleteUser(@PathVariable Long id) {
         service.deleteUser(id);
     }
 
