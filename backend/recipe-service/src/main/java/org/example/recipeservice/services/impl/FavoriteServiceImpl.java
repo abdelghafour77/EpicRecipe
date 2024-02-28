@@ -1,19 +1,26 @@
 package org.example.recipeservice.services.impl;
 
 import lombok.AllArgsConstructor;
-import org.example.recipeservice.repository.RecipeRepository;
+import org.example.recipeservice.entities.Favorite;
+import org.example.recipeservice.repository.FavoriteRepository;
 import org.example.recipeservice.services.FavoriteService;
+import org.example.recipeservice.users.UserRestRecipe;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @AllArgsConstructor
 public class FavoriteServiceImpl implements FavoriteService {
 
-    private final RecipeRepository repository;
+    private final FavoriteRepository repository;
+    private final UserRestRecipe userRestRecipe;
 
     @Override
-    public void addFavorite(Long recipeId) {
-
+    public Favorite addFavorite(Favorite favorite) {
+        Favorite saveFavorite= repository.save(favorite);
+        saveFavorite.setUser(userRestRecipe.findUserById(favorite.getUserId()));
+        return saveFavorite;
     }
 
     @Override
@@ -22,7 +29,9 @@ public class FavoriteServiceImpl implements FavoriteService {
     }
 
     @Override
-    public void getFavorites() {
-
+    public List<Favorite> getFavorites() {
+    List<Favorite> allFavorite = repository.findAll();
+    allFavorite.forEach(favorite -> favorite.setUser(userRestRecipe.findUserById(favorite.getUserId())));
+    return allFavorite;
     }
 }

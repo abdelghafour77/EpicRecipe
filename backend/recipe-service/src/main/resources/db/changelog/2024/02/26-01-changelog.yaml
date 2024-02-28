@@ -1,0 +1,98 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1708956125199-1
+      author: noone (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: recipe_steps
+            constraintName: FK_RECIPESTEPS_ON_RECIPE
+  - changeSet:
+      id: 1708956125199-2
+      author: noone (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: search_history
+            constraintName: FK_SEARCHHISTORY_ON_USER
+  - changeSet:
+      id: 1708956125199-3
+      author: noone (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: recipe_ingredients
+            constraintName: fk_recing_on_ingredient
+  - changeSet:
+      id: 1708956125199-4
+      author: noone (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: recipe_ingredients
+            constraintName: fk_recing_on_recipe
+  - changeSet:
+      id: 1708956125199-5
+      author: noone (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: recipe_tags
+            constraintName: fk_rectag_on_recipe
+  - changeSet:
+      id: 1708956125199-6
+      author: noone (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: recipe_tags
+            constraintName: fk_rectag_on_tag
+  - changeSet:
+      id: 1708956125199-7
+      author: noone (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: user_roles
+            constraintName: fk_user_roles_on_user
+  - changeSet:
+      id: 1708956125199-8
+      author: noone (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - dropTable:
+            cascadeConstraints: true
+            tableName: recipe_ingredients
+  - changeSet:
+      id: 1708956125199-9
+      author: noone (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - dropTable:
+            cascadeConstraints: true
+            tableName: recipe_steps
+  - changeSet:
+      id: 1708956125199-10
+      author: noone (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - dropTable:
+            cascadeConstraints: true
+            tableName: recipe_tags
+  - changeSet:
+      id: 1708956125199-11
+      author: noone (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - dropTable:
+            cascadeConstraints: true
+            tableName: search_history
+  - changeSet:
+      id: 1708956125199-12
+      author: noone (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - dropTable:
+            cascadeConstraints: true
+            tableName: user_roles
+

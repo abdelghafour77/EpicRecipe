@@ -1,12 +1,17 @@
 package org.example.recipeservice.entities;
 
-import lombok.Data;
+import lombok.*;
 
 import jakarta.persistence.*;
+
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Tag {
 
     @Id
@@ -15,9 +20,8 @@ public class Tag {
 
     private String name;
 
-    @ManyToMany(mappedBy = "tags")
-    private List<Recipe> recipes;
+//    @ManyToMany(mappedBy = "tags")
+//    private List<Recipe> recipes;
 
-    // Constructors, getters, setters, etc.
 }
 

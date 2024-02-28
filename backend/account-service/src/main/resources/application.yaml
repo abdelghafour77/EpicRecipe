@@ -1,6 +1,6 @@
 # Server Configuration
 server:
-  port: 8081
+  port: 8082
   error:
     include-message: always
     include-binding-errors: always
@@ -12,7 +12,7 @@ spring:
       enabled: always
   # Database Configuration
   datasource:
-    url: jdbc:mysql://localhost:3306/EpicRecipe?createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/EpicRecipeUser?createDatabaseIfNotExist=true
     username: root
     password:
   jpa:
@@ -21,12 +21,12 @@ spring:
       ddl-auto: update
     properties:
       hibernate:
-#        dialect: org.hibernate.dialect.MySQL8Dialect
+        #        dialect: org.hibernate.dialect.MySQL8Dialect
         globally_quoted_identifiers: true
         format_sql: false
   sql:
     init:
-#      set this to always if you want to initialize the database with the data.sql file
+      #      set this to always if you want to initialize the database with the data.sql file
       mode: never
       platform: mysql
       data-locations: classpath:data.sql
@@ -39,7 +39,7 @@ spring:
     config:
       enabled: false
   application:
-    name: recipe-service
+    name: account-service
 
 eureka:
   instance:
@@ -47,9 +47,3 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info,refresh

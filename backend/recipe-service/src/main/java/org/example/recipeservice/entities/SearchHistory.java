@@ -1,21 +1,27 @@
 package org.example.recipeservice.entities;
 
-import lombok.Data;
+import lombok.*;
 
 import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 
 @Entity
-@Data
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class SearchHistory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
+    @Transient
     private User user;
+
+    private Long userId;
 
     private String searchTerm;
 
