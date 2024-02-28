@@ -1,7 +1,11 @@
 package org.example.recipeservice.services;
 
+import org.example.recipeservice.entities.Favorite;
+
+import java.util.List;
+
 public interface FavoriteService {
-    void addFavorite(Long recipeId);
+    Favorite addFavorite(Favorite favorite);
     void removeFavorite(Long recipeId);
-    void getFavorites();
+    List<Favorite> getFavorites();
 }

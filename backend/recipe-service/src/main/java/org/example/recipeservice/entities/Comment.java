@@ -2,11 +2,17 @@ package org.example.recipeservice.entities;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
+
 
 @Entity
-@Data
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Comment {
 
     @Id
@@ -15,13 +21,14 @@ public class Comment {
 
     private String content;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
+    private Long userId;
+
+    @Transient
     private User user;
 
-    @ManyToOne
+    @JsonIgnoreProperties("comments")
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "recipe_id")
     private Recipe recipe;
 
-    // Constructors, getters, setters, etc.
 }
