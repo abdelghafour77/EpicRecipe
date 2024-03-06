@@ -163,25 +163,25 @@ values
 
 # --\       Recipe Steps       /--
 
-insert into recipe_steps (recipe_id, step)
-values (1, 'Preheat the oven to 350°F (175°C).'),
-       (1, 'In a large mixing bowl, combine the flour, sugar, baking powder, and salt.'),
-       (1, 'In a separate bowl, whisk together the eggs, milk, and melted butter.'),
-       (1, 'Pour the wet ingredients into the dry ingredients and mix until just combined.'),
-       (1, 'Gently fold in the blueberries.'),
-       (1, 'Pour the batter into a greased baking dish.'),
-       (1, 'Bake for 40-45 minutes or until golden brown and a toothpick inserted into the center comes out clean.'),
-       (1, 'Allow the cake to cool slightly before serving.');
+insert into recipe_steps (recipe_id, step_number, step)
+values (1,1, 'Preheat the oven to 350°F (175°C).'),
+       (1,2, 'In a large mixing bowl, combine the flour, sugar, baking powder, and salt.'),
+       (1,3, 'In a separate bowl, whisk together the eggs, milk, and melted butter.'),
+       (1,4, 'Pour the wet ingredients into the dry ingredients and mix until just combined.'),
+       (1,5, 'Gently fold in the blueberries.'),
+       (1,6, 'Pour the batter into a greased baking dish.'),
+       (1,7, 'Bake for 40-45 minutes or until golden brown and a toothpick inserted into the center comes out clean.'),
+       (1,8, 'Allow the cake to cool slightly before serving.');
 
-insert into recipe_steps (recipe_id, step)
-values (2, 'Cook the pasta according to package instructions until al dente. Drain and set aside.'),
-       (2, 'In a large skillet, heat olive oil over medium heat.'),
-       (2, 'Add minced garlic and cook for 1-2 minutes until fragrant.'),
-       (2, 'Stir in diced tomatoes, tomato paste, and Italian seasoning.'),
-       (2, 'Simmer the sauce for 10-15 minutes until slightly thickened.'),
-       (2, 'Add the cooked pasta to the skillet and toss to coat evenly with the sauce.'),
-       (2, 'Sprinkle with grated Parmesan cheese and chopped fresh basil before serving.'),
-       (2, 'Enjoy your delicious homemade pasta!');
+insert into recipe_steps (recipe_id, step_number, step)
+values (2,1, 'Cook the pasta according to package instructions until al dente. Drain and set aside.'),
+       (2,2, 'In a large skillet, heat olive oil over medium heat.'),
+       (2,3, 'Add minced garlic and cook for 1-2 minutes until fragrant.'),
+       (2,4, 'Stir in diced tomatoes, tomato paste, and Italian seasoning.'),
+       (2,5, 'Simmer the sauce for 10-15 minutes until slightly thickened.'),
+       (2,6, 'Add the cooked pasta to the skillet and toss to coat evenly with the sauce.'),
+       (2,7, 'Sprinkle with grated Parmesan cheese and chopped fresh basil before serving.'),
+       (2,8, 'Enjoy your delicious homemade pasta!');
 
 # --\       Comment       /--
 
