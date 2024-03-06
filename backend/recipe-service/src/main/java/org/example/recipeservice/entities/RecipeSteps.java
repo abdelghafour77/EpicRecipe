@@ -17,7 +17,7 @@ public class RecipeSteps {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
+    private int stepNumber;
 
     @JsonIgnoreProperties("recipeSteps")
     @ManyToOne(cascade = CascadeType.ALL)
