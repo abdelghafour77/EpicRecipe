@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { AuthGuard } from './guards/auth.guard';
+import { UsersComponent } from './components/users/users.component';
 
 const routes: Routes = [
   {
@@ -10,6 +11,21 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { roles: ['USER'] },
   },
+  {
+    path: 'users',
+    component: UsersComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['USER'] },
+  },
+  // {
+  //   path: '',
+  //   redirectTo: 'recipes',
+  //   pathMatch: 'full',
+  // },
+  // {
+  //   path: '**',
+  //   redirectTo: 'recipes',
+  // },
   // {
   //   path: 'recipes',
   //   loadChildren: () =>
