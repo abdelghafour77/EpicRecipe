@@ -8,8 +8,8 @@ import { User } from '../models/user';
   providedIn: 'root',
 })
 export class UserService {
-  // private apiUrl = 'http://localhost:8888/ACCOUNT-SERVICE/api/v1/users';
-  private apiUrl = 'http://localhost:8082/api/v1/users';
+  private apiUrl = 'http://localhost:8888/ACCOUNT-SERVICE/api/v1/users';
+  // private apiUrl = 'http://localhost:8082/api/v1/users';
 
   constructor(private http: HttpClient) {}
 
