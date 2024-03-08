@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
-import { RecipesComponent } from './components/recipes/recipes.component';
-import { UsersComponent } from './components/users/users.component';
+import { RecipesComponent } from './shared/components/recipes/recipes.component';
+import { UsersComponent } from './shared/components/users/users.component';
+import { RouteListComponent } from './route-list/route-list.component';
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
@@ -29,7 +30,8 @@ function initializeKeycloak(keycloak: KeycloakService) {
   declarations: [
     AppComponent,
     RecipesComponent,
-    UsersComponent
+    UsersComponent,
+    RouteListComponent
   ],
   imports: [
     BrowserModule,

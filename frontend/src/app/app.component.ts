@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {KeycloakService} from "keycloak-angular";
 import {KeycloakProfile} from "keycloak-js";
 import { initFlowbite } from 'flowbite';
-import { Flowbite } from './config/flowbiteConfig';
+import { Flowbite } from './core/config/flowbiteConfig';
 
 @Component({
   selector: 'app-root',
