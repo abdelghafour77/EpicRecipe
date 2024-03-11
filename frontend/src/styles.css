@@ -7,3 +7,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+  .cat-card {
+    @apply rounded-21xl bg-white shadow-custom w-56 h-56;
+  }
+}
+
+.my-list li {
+  @apply pt-2 text-gray-700 font-inter;
+}

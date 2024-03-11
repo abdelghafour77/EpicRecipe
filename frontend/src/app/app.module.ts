@@ -9,6 +9,11 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { RecipesComponent } from './shared/components/recipes/recipes.component';
 import { UsersComponent } from './shared/components/users/users.component';
 import { RouteListComponent } from './route-list/route-list.component';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { HeroSectionComponent } from './shared/components/hero-section/hero-section.component';
+import { CardDisheComponent } from './shared/components/card-dishe/card-dishe.component';
+import { CardAboutUsComponent } from './shared/components/card-about-us/card-about-us.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
@@ -31,7 +36,12 @@ function initializeKeycloak(keycloak: KeycloakService) {
     AppComponent,
     RecipesComponent,
     UsersComponent,
-    RouteListComponent
+    RouteListComponent,
+    NavbarComponent,
+    HeroSectionComponent,
+    CardDisheComponent,
+    CardAboutUsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
