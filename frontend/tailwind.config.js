@@ -13,6 +13,8 @@ module.exports = {
 
         extend: {
             colors: {
+                mehdi: '#417E55',
+                mehdi_light: '#9ABE9D',
                 my_green: '#39DB4A',
                 black: "#000",
                 darkseagreen: "#90bd95",
@@ -92,8 +94,9 @@ module.exports = {
                 '1/1': '100%',
             },
             fontFamily: {
+                Playfair: "Playfair Display",
                 poppins: "Poppins",
-                inter: ['var(--font-inter)', 'sans-serif'],
+                inter: "Inter",
             },
             borderRadius: {
                 "6xl": "25px",
