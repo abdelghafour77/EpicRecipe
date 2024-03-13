@@ -3,7 +3,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poor+Story&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Delius+Unicase&family=Poor+Story&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+  .cat-card {
+    @apply rounded-21xl bg-white shadow-custom w-56 h-56;
+  }
+}
+
+.my-list li {
+  @apply pt-2 text-gray-700 font-inter;
+}

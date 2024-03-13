@@ -13,6 +13,35 @@ module.exports = {
 
         extend: {
             colors: {
+                mehdi: '#417E55',
+                mehdi_light: '#9ABE9D',
+                mehdi_dark: '#417F56',
+                my_green: '#39DB4A',
+                black: "#000",
+                darkseagreen: "#90bd95",
+                palegreen: "#5fe26c",
+                lightgoldenrodyellow: "#c1f1c6",
+                honeydew: "#edffef",
+                whitesmoke: "#efefef",
+                limegreen: {
+                    "100": "#53ec62",
+                    "200": "#39db4a",
+                },
+                dimgray: {
+                    "100": "#656565",
+                    "200": "#555",
+                    "300": "#515151",
+                    "400": "#4d4d4d",
+                },
+                salmon: {
+                    "100": "#ff7979",
+                    "200": "#ff6868",
+                },
+                white: "#fff",
+                darkslategray: {
+                    "100": "#4a4a4a",
+                    "200": "#454545",
+                },
                 gray: {
                     100: '#FBFBFB',
                     200: '#EAEAEA',
@@ -58,6 +87,7 @@ module.exports = {
                 inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.04)',
                 outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
                 none: 'none',
+                custom: '2px 10px 30px rgba(0, 0, 0, 0.1)'
             },
             spacing: {
                 '9/16': '56.25%',
@@ -65,7 +95,18 @@ module.exports = {
                 '1/1': '100%',
             },
             fontFamily: {
-                inter: ['var(--font-inter)', 'sans-serif'],
+                Playfair: "Playfair Display",
+                poppins: "Poppins",
+                inter: "Inter",
+            },
+            borderRadius: {
+                "6xl": "25px",
+                "21xl": "40px",
+                "18xl-5": "37.5px",
+                "23xl-5": "42.5px",
+                "11xl": "30px",
+                "121xl": "140px",
+                "22xl": "41px",
             },
             fontSize: {
                 xs: '0.75rem',
