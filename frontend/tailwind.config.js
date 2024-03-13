@@ -15,6 +15,7 @@ module.exports = {
             colors: {
                 mehdi: '#417E55',
                 mehdi_light: '#9ABE9D',
+                mehdi_dark: '#417F56',
                 my_green: '#39DB4A',
                 black: "#000",
                 darkseagreen: "#90bd95",
