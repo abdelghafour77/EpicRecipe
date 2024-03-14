@@ -5,81 +5,28 @@
 	<app-navbar></app-navbar>
 	<div class="container min-h-screen mx-auto">
 		<app-hero-section></app-hero-section>
-		<div class="grid grid-cols-1 py-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 content-center justify-items-center">
-			<div class="cat-card flex flex-col justify-evenly">
-				<div class="mx-auto justify-center flex items-center rounded-[50%] bg-lightgoldenrodyellow w-32 h-32">
-					<img class="w-24 h-20 object-cover" alt="" src="../../../../assets/img/pngwing 4.png" />
-				</div>
-				<div>
-					<div class="font-semibold text-gray-700 text-center">Main Dish</div>
-					<div class="font-thin text-sm text-center">(86 dishes)</div>
-				</div>
-			</div>
-			<div class="cat-card flex flex-col justify-evenly">
-				<div class="mx-auto justify-center flex items-center rounded-[50%] bg-lightgoldenrodyellow w-32 h-32">
-					<img class="w-24 h-20 object-cover" alt="" src="../../../../assets/img/pngwing 4.png" />
-				</div>
-				<div>
-					<div class="font-semibold text-gray-700 text-center">Main Dish</div>
-					<div class="font-thin text-sm text-center">(86 dishes)</div>
-				</div>
-			</div>
-			<div class="cat-card flex flex-col justify-evenly">
-				<div class="mx-auto justify-center flex items-center rounded-[50%] bg-lightgoldenrodyellow w-32 h-32">
-					<img class="w-24 h-20 object-cover" alt="" src="../../../../assets/img/pngwing 4.png" />
-				</div>
-				<div>
-					<div class="font-semibold text-gray-700 text-center">Main Dish</div>
-					<div class="font-thin text-sm text-center">(86 dishes)</div>
-				</div>
-			</div>
-			<div class="cat-card flex flex-col justify-evenly">
-				<div class="mx-auto justify-center flex items-center rounded-[50%] bg-lightgoldenrodyellow w-32 h-32">
-					<img class="w-24 h-20 object-cover" alt="" src="../../../../assets/img/pngwing 4.png" />
-				</div>
-				<div>
-					<div class="font-semibold text-gray-700 text-center">Main Dish</div>
-					<div class="font-thin text-sm text-center">(86 dishes)</div>
-				</div>
-			</div>
-			<div class="cat-card flex flex-col justify-evenly">
-				<div class="mx-auto justify-center flex items-center rounded-[50%] bg-lightgoldenrodyellow w-32 h-32">
-					<img class="w-24 h-20 object-cover" alt="" src="../../../../assets/img/pngwing 4.png" />
-				</div>
-				<div>
-					<div class="font-semibold text-gray-700 text-center">Main Dish</div>
-					<div class="font-thin text-sm text-center">(86 dishes)</div>
-				</div>
-			</div>
-			<div class="cat-card flex flex-col justify-evenly">
-				<div class="mx-auto justify-center flex items-center rounded-[50%] bg-lightgoldenrodyellow w-32 h-32">
-					<img class="w-24 h-20 object-cover" alt="" src="../../../../assets/img/pngwing 4.png" />
-				</div>
-				<div>
-					<div class="font-semibold text-gray-700 text-center">Main Dish</div>
-					<div class="font-thin text-sm text-center">(86 dishes)</div>
-				</div>
-			</div>
-			<div class="cat-card flex flex-col justify-evenly">
-				<div class="mx-auto justify-center flex items-center rounded-[50%] bg-lightgoldenrodyellow w-32 h-32">
-					<img class="w-24 h-20 object-cover" alt="" src="../../../../assets/img/pngwing 4.png" />
-				</div>
-				<div>
-					<div class="font-semibold text-gray-700 text-center">Main Dish</div>
-					<div class="font-thin text-sm text-center">(86 dishes)</div>
-				</div>
-			</div>
-			<div class="cat-card flex flex-col justify-evenly">
-				<div class="mx-auto justify-center flex items-center rounded-[50%] bg-lightgoldenrodyellow w-32 h-32">
-					<img class="w-24 h-20 object-cover" alt="" src="../../../../assets/img/pngwing 4.png" />
-				</div>
-				<div>
-					<div class="font-semibold text-gray-700 text-center">Main Dish</div>
-					<div class="font-thin text-sm text-center">(86 dishes)</div>
-				</div>
-			</div>
+		<h1 class="text-center font-bold text-xl tracking-[0.18em] uppercase text-salmon-200 pt-20">Special Recipes</h1>
+		<h1 class="text-center text-2xl font-bold text-black">Popular Categories</h1>
+		<div class="flex flex-no-wrap overflow-x-scroll scrolling-touch items-start mb-8 gap-4 p-8 scrollbar-default">
+			<app-category></app-category>
+			<app-category></app-category>
+			<app-category></app-category>
+			<app-category></app-category>
+			<app-category></app-category>
+			<app-category></app-category>
 		</div>
-		<app-card-dishe></app-card-dishe>
+
+		<h1 class="font-bold text-xl tracking-[0.18em] uppercase text-salmon-200 mt-12">Special Recipes</h1>
+		<h1 class="text-3xl font-bold mt-3 mb-10">
+			Standout Dishes <br />
+			From Our Website
+		</h1>
+		<!-- grid auto-rows-max auto-cols-auto grid-flow-col justify-items-center -->
+		<div class="flex flex-wrap justify-center sm:justify-between">
+			<app-card-dishe></app-card-dishe>
+			<app-card-dishe></app-card-dishe>
+			<app-card-dishe></app-card-dishe>
+		</div>
 		<app-card-about-us></app-card-about-us>
 		<app-footer></app-footer>
 	</div>
