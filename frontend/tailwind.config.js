@@ -13,10 +13,13 @@ module.exports = {
 
         extend: {
             colors: {
-                mehdi: '#417E55',
-                mehdi_light: '#9ABE9D',
-                mehdi_dark: '#417F56',
-                my_green: '#39DB4A',
+                mygreen: {
+                    "100": "#C7DEC1",
+                    "200": "#9ABF9D",
+                    "300": "#417F56",
+                    "400": "#39DB4A",
+                },
+                offwhite: "#FCFCFC",
                 black: "#000",
                 darkseagreen: "#90bd95",
                 palegreen: "#5fe26c",
