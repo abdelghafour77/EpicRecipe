@@ -6,9 +6,11 @@ import { RouterOutlet } from "@angular/router";
 import { RecipeRoutingModule } from "./recipe-routing.module";
 import { SharedModule } from "app/shared/shared.module";
 import { RecipesComponent } from "./recipes/recipes.component";
+import { CommentComponent } from './comment/comment.component';
+import { RatingComponent } from './rating/rating.component';
 
 @NgModule({
-	declarations: [RecipeComponent, RecipeDetailsComponent, RecipesComponent],
+	declarations: [RecipeComponent, RecipeDetailsComponent, RecipesComponent, CommentComponent, RatingComponent],
 	imports: [CommonModule, RouterOutlet, RecipeRoutingModule, SharedModule],
 })
 export class RecipeModule {}
