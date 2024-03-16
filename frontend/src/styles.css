@@ -16,5 +16,5 @@
 }
 
 .my-list li {
-  @apply pt-2 text-gray-700;
+  @apply pt-2 text-gray-700 text-center md:text-start;
 }
