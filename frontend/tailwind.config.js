@@ -18,7 +18,10 @@ module.exports = {
                     "200": "#9ABF9D",
                     "300": "#417F56",
                     "400": "#39DB4A",
+                    "500": "#13a322",
+                    "600": "#098216",
                 },
+
                 offwhite: "#FCFCFC",
                 black: "#000",
                 darkseagreen: "#90bd95",
