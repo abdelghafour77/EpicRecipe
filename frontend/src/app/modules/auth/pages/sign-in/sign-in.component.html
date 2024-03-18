@@ -1,25 +1,26 @@
 <div
-	class="bg-seagreen box-border min-h-60 min-w-[40vw] rounded-21xl border-solid border-mygreen-300 border-opacity-100 p-6 [backdrop-filter:blur(25px)]">
+	class="bg-seagreen my-auto box-border min-h-60 min-w-[90vw] rounded-21xl border-solid border-mygreen-300 border-opacity-100 p-6 [backdrop-filter:blur(25px)] md:min-w-[50vw]">
 	<div class="flex h-full flex-col items-center justify-center">
-		<img class="absolute left-[94%] top-[76%] z-10 w-32" src="../../../../../assets/img/auth-1.png" alt="" />
-		<img class="absolute -left-[20%] top-[20%] z-10 w-32" src="../../../../../assets/img/auth-2.svg" alt="" />
-		<div class="flex w-full flex-col items-center justify-center">
-			<div class="mx-auto flex min-w-[30vw] flex-col">
-				<img class="w-28 self-center" src="../../../../../assets/img/logo.svg" alt="logo" />
-
+		<img class="absolute left-[94%] top-[76%] z-10 hidden w-32 md:block" src="../../../../../assets/img/auth-1.png" alt="" />
+		<img class="absolute -left-[12%] top-[20%] z-10 hidden w-32 md:block" src="../../../../../assets/img/auth-2.svg" alt="" />
+		<div class="flex w-full flex-col items-center justify-center px-8 md:px-12">
+			<div class="mx-auto flex w-full flex-col">
+				<!-- <div>
+					<img class="w-28 self-center" src="../../../../../assets/img/logo.svg" alt="logo" />
+				</div> -->
 				<h1 class="mb-6 text-3xl font-bold text-white">Sign In</h1>
 			</div>
-			<form class="mx-auto min-w-[30vw]">
-				<div class="mb-5">
+			<form class="mx-auto block w-full">
+				<div class="mb-3">
 					<label for="email" class="mb-2 block text-sm font-light text-white dark:text-gray-900">Email</label>
 					<input
 						type="email"
 						id="email"
 						class="block w-full rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-						placeholder="name@mail.com"
+						placeholder="email@mail.com"
 						required />
 				</div>
-				<div class="mb-2">
+				<div class="mb-3">
 					<label for="password" class="mb-2 block text-sm font-light text-white dark:text-gray-900">Password</label>
 					<input
 						type="password"
@@ -38,6 +39,7 @@
 							type="checkbox"
 							value=""
 							class="focus:ring-3 h-4 w-4 rounded border border-gray-300 text-mygreen-300 focus:ring-mygreen-100 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800"
+							checked
 							required />
 					</div>
 					<label for="remember" class="ms-2 text-sm font-light text-gray-100 dark:text-gray-900">Remember me</label>

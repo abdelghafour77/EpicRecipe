@@ -22,12 +22,12 @@
 	</ul>
 	<a
 		class="hidden rounded-xl border-2 border-mygreen-100 bg-gray-50 px-6 py-2 text-sm font-bold text-gray-900 transition duration-200 hover:bg-mygreen-300 hover:text-white lg:ml-auto lg:mr-3 lg:inline-block"
-		href="#">
+		[routerLink]="['/auth/sign-in']">
 		Sign In
 	</a>
 	<a
 		class="hidden rounded-xl bg-mygreen-200 px-6 py-2 text-sm font-bold text-white transition duration-200 hover:bg-mygreen-300 lg:inline-block"
-		href="#">
+		[routerLink]="['/auth/sign-up']">
 		Sign up
 	</a>
 </nav>
@@ -69,14 +69,14 @@
 			<div class="pt-6">
 				<a
 					class="mb-3 block rounded-xl bg-gray-50 px-4 py-3 text-center text-xs font-semibold leading-loose duration-300 ease-in-out hover:bg-mygreen-300 hover:text-white"
-					href="#"
-					>Sign in</a
-				>
+					[routerLink]="['/auth/sign-in']">
+					Sign in
+				</a>
 				<a
 					class="mb-2 block rounded-xl bg-mygreen-200 px-4 py-3 text-center text-xs font-semibold leading-loose text-white hover:bg-mygreen-300"
-					href="#"
-					>Sign Up</a
-				>
+					[routerLink]="['/auth/sign-up']">
+					Sign Up
+				</a>
 			</div>
 			<p class="my-4 text-center text-xs text-gray-400">
 				<span>Copyright © 2024</span>
