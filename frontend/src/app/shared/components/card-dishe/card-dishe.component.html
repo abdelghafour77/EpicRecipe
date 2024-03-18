@@ -1,9 +1,9 @@
-<div class="rounded-21xl bg-white shadow-custom w-80 h-96 flex flex-col mb-6">
+<div class="mb-6 flex h-96 w-80 flex-col rounded-21xl bg-white shadow-custom">
 	<div class="flex justify-end">
 		<div
-			class="flex items-center flex-col justify-center w-20 h-16 rounded-tl-none rounded-tr-18xl-5 rounded-br-none rounded-bl-23xl-5 bg-mygreen-300 group z-10 cursor-pointer">
+			class="group z-10 flex h-16 w-20 cursor-pointer flex-col items-center justify-center rounded-bl-23xl-5 rounded-br-none rounded-tl-none rounded-tr-18xl-5 bg-mygreen-300">
 			<svg
-				class="w-7 h-7 stroke-white group-hover:fill-white group-hover:w-8 group-hover:h-8 ease-in-out duration-300"
+				class="h-7 w-7 stroke-white duration-300 ease-in-out group-hover:h-8 group-hover:w-8 group-hover:fill-white"
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"
 				viewBox="0 0 24 24"
@@ -16,16 +16,16 @@
 			</svg>
 		</div>
 	</div>
-	<div class="p-6 -top-16 relative min-h-96 flex flex-col justify-around">
-		<div class="flex justify-center items-center">
-			<img class="w-40 h-40 object-cover" alt="" src="../../../../assets/img/Fattoush salad.png" />
+	<div class="relative -top-16 flex min-h-96 flex-col justify-around p-6">
+		<div class="flex items-center justify-center">
+			<img class="h-40 w-40 object-cover" alt="" src="../../../../assets/img/Fattoush salad.png" />
 		</div>
 		<div class="text-2xl font-semibold text-black">Fattoush salad</div>
 		<div class="text-sm font-semibold text-gray-800">Description of the item</div>
 		<div class="flex justify-between">
 			<div class="flex items-center">
 				<!-- <img  alt="" src="../../../../assets/img/fi-sr-star.png" /> -->
-				<svg class="w-5 h-5 overflow-hidden mr-3 text-yellow-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+				<svg class="mr-3 h-5 w-5 overflow-hidden text-yellow-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
 					<path
 						fill-rule="evenodd"
 						d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
@@ -35,7 +35,7 @@
 				<div class="font-semibold text-darkslategray-200">4.9</div>
 			</div>
 
-			<button [routerLink]="['recipe', 1]" class="text-white py-2 px-4 rounded-lg bg-mygreen-300 hover:bg-mygreen-200 ease-in-out duration-300">
+			<button [routerLink]="['recipe', 1]" class="rounded-lg bg-mygreen-300 px-4 py-2 text-white duration-300 ease-in-out hover:bg-mygreen-200">
 				More
 			</button>
 		</div>

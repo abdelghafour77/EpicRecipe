@@ -6,9 +6,7 @@ import { AppComponent } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
 
 import { KeycloakAngularModule, KeycloakService } from "keycloak-angular";
-import { RecipesComponent } from "./shared/components/recipes/recipes.component";
 import { UsersComponent } from "./shared/components/users/users.component";
-import { RouteListComponent } from "./route-list/route-list.component";
 import { HeroSectionComponent } from "./shared/components/hero-section/hero-section.component";
 import { CardDisheComponent } from "./shared/components/card-dishe/card-dishe.component";
 import { CardAboutUsComponent } from "./shared/components/card-about-us/card-about-us.component";
@@ -31,16 +29,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
 }
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		RecipesComponent,
-		UsersComponent,
-		RouteListComponent,
-		HeroSectionComponent,
-		CardDisheComponent,
-		CardAboutUsComponent,
-		LandingPageComponent,
-	],
+	declarations: [AppComponent, UsersComponent, HeroSectionComponent, CardDisheComponent, CardAboutUsComponent, LandingPageComponent],
 	imports: [BrowserModule, AppRoutingModule, KeycloakAngularModule, HttpClientModule, SharedModule],
 	providers: [
 		// {
