@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RouteListComponent } from './route-list.component';
+import { CommentComponent } from './comment.component';
 
-describe('RouteListComponent', () => {
-  let component: RouteListComponent;
-  let fixture: ComponentFixture<RouteListComponent>;
+describe('CommentComponent', () => {
+  let component: CommentComponent;
+  let fixture: ComponentFixture<CommentComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [RouteListComponent]
+      declarations: [CommentComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(RouteListComponent);
+    fixture = TestBed.createComponent(CommentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

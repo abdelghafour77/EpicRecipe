@@ -5,10 +5,12 @@ import { RecipeDetailsComponent } from "./pages/recipe-details/recipe-details.co
 import { RouterOutlet } from "@angular/router";
 import { RecipeRoutingModule } from "./recipe-routing.module";
 import { SharedModule } from "app/shared/shared.module";
-import { RecipesComponent } from "./recipes/recipes.component";
+import { RecipesComponent } from "./components/recipes/recipes.component";
+import { CommentComponent } from "./components/comment/comment.component";
+import { RatingComponent } from "./components/rating/rating.component";
 
 @NgModule({
-	declarations: [RecipeComponent, RecipeDetailsComponent, RecipesComponent],
+	declarations: [RecipeComponent, RecipeDetailsComponent, RecipesComponent, CommentComponent, RatingComponent],
 	imports: [CommonModule, RouterOutlet, RecipeRoutingModule, SharedModule],
 })
 export class RecipeModule {}
