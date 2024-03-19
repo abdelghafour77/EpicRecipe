@@ -1,11 +1,11 @@
 .bg-auth {
     background: url('../../../assets/img/auth-bg.png') no-repeat center center;
     background-size: cover;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    min-height: 100vh;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* position: relative; */
     z-index: 1;
 
     /* &:before {

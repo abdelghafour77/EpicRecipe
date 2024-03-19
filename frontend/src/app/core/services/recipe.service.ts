@@ -1,18 +1,21 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
-import { Recipe } from '../models/recipe';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { Recipe } from "../models/recipe";
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: "root",
 })
 export class RecipeService {
-  private apiUrl = 'http://localhost:8888/RECIPE-SERVICE/api/v1/recipes';
-  // private apiUrl = 'http://localhost:8081/api/v1/recipes';
+	constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) {}
+	private apiUrl = "http://localhost:8888/RECIPE-SERVICE/api/v1/recipes";
 
-  getUsers(): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(this.apiUrl);
-  }
+	getTopRecipes(): Observable<Recipe[]> {
+		return this.http.get<Recipe[]>(this.apiUrl + "/top/3");
+	}
+
+	getRecipeById(id: string): Observable<Recipe> {
+		return this.http.get<Recipe>(this.apiUrl + "/" + id);
+	}
 }
