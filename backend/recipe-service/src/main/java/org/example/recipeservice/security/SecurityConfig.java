@@ -30,7 +30,7 @@ public class SecurityConfig {
                 .sessionManagement(sm->sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .csrf(AbstractHttpConfigurer::disable)
                 //.authorizeHttpRequests(ar->ar.requestMatchers("/api/customers/**").hasAuthority("USER"))
-                .authorizeHttpRequests(ar->ar.requestMatchers("/swagger-ui.html","swagger-ui/**","/v3/**").permitAll())
+                .authorizeHttpRequests(ar->ar.requestMatchers("/swagger-ui.html","swagger-ui/**","/v3/**","/api/v1/**").permitAll())
                 .authorizeHttpRequests(ar->ar.anyRequest().authenticated())
                 .oauth2ResourceServer(ors->ors.jwt(jwt->jwt.jwtAuthenticationConverter(jwtAuthConverter)))
                 .build();
