@@ -6,27 +6,18 @@
 	<div class="container mx-auto min-h-screen">
 		<app-hero-section></app-hero-section>
 		<h1 class="pt-20 text-center text-xl font-bold uppercase tracking-[0.18em] text-salmon-200">Special Recipes</h1>
-		<h1 class="text-center text-2xl font-bold text-black">Popular Categories</h1>
-		<div class="flex-no-wrap scrolling-touch mb-8 flex items-start gap-4 overflow-x-scroll p-8 scrollbar-default" id="categories">
-			<app-category></app-category>
-			<app-category></app-category>
-			<app-category></app-category>
-			<app-category></app-category>
-			<app-category></app-category>
-			<app-category></app-category>
-		</div>
+		<ng-container *ngIf="landingPage?.categories">
+			<app-category [categories]="landingPage.categories ?? []"></app-category>
+		</ng-container>
 
 		<h1 class="mt-12 text-xl font-bold uppercase tracking-[0.18em] text-salmon-200">Special Recipes</h1>
 		<h1 class="mb-10 mt-3 text-3xl font-bold">
 			Standout Dishes <br />
 			From Our Website
 		</h1>
-		<!-- grid auto-rows-max auto-cols-auto grid-flow-col justify-items-center -->
-		<div class="flex flex-wrap justify-center sm:justify-between">
-			<app-card-dishe></app-card-dishe>
-			<app-card-dishe></app-card-dishe>
-			<app-card-dishe></app-card-dishe>
-		</div>
+		<ng-container *ngIf="landingPage?.recipes">
+			<app-card-dishe [recipes]="landingPage.recipes ?? []"></app-card-dishe>
+		</ng-container>
 		<app-card-about-us></app-card-about-us>
 		<app-footer></app-footer>
 	</div>

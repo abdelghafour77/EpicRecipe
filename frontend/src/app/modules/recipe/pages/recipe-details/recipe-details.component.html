@@ -3,20 +3,33 @@
 		<!-- src="https://via.placeholder.com/1920x1080" -->
 		<img class="absolute inset-0 h-full w-screen object-cover" src="../../../../../assets/img/pizza.jpg" alt="University of Southern California" />
 		<div class="absolute inset-0 bg-gradient-to-t from-black via-black/40"></div>
-		<h3 class="z-10 mt-3 text-3xl font-bold text-white">Recipe name</h3>
+		<h3 class="z-10 mt-3 text-3xl font-bold text-white">{{ recipe.title }}</h3>
 		<div class="z-10 flex justify-between gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">
 			<div class="flex items-center ps-4 text-gray-400">
-				<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+				<svg class="h-5 w-5 pr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
 					<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
 				</svg>
-				<span class="font-semibold"> March 22,2024</span>
+				<span class="font-semibold">
+					{{ recipe.createdAt ? (recipe.createdAt | date : "MMMM d, y") : "N/A" }}
+				</span>
 			</div>
 			<!-- Rating  -->
-			<app-rating></app-rating>
+			<!-- <app-rating></app-rating> -->
+			<div class="flex justify-between pe-4 text-gray-200">
+				<div class="flex items-center print:hidden">
+					<svg class="me-1 h-4 w-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+						<path
+							d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+					</svg>
+					<p class="ms-2 text-sm font-bold dark:text-white">4.95</p>
+					<span class="mx-1.5 h-1 w-1 rounded-full bg-gray-500 dark:bg-gray-400"></span>
+					<a href="#comments" class="text-sm font-medium dark:text-white">{{ recipe.comments?.length }} Comments</a>
+				</div>
+			</div>
 		</div>
 		<!-- <div class="z-10 gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">description</div> -->
 	</div>
-	<h1 class="hidden pb-9 pt-12 text-center font-Poppins font-bold print:block">Name of Recipe</h1>
+	<h1 class="hidden pb-9 pt-12 text-center font-Poppins font-bold print:block">{{ recipe.title }}</h1>
 	<img class="mx-auto hidden w-[80vw] print:block" src="../../../../../assets/img/pizza.jpg" alt="University of Southern California" />
 	<div class="container mx-auto">
 		<nav class="flex py-8 print:hidden" aria-label="Breadcrumb">
@@ -57,7 +70,7 @@
 							viewBox="0 0 6 10">
 							<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
 						</svg>
-						<span class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400 md:ms-2"> Name of the recipe </span>
+						<span class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400 md:ms-2"> {{ recipe.title }} </span>
 					</div>
 				</li>
 			</ol>
@@ -67,58 +80,26 @@
 		<h1 class="pt-5 text-3xl font-bold">Description</h1>
 		<hr class="mb-8 mt-4 h-px border-0 bg-gray-200 dark:bg-gray-700" />
 		<p class="pb-5 text-gray-600">
-			Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat maiores voluptas, nulla sapiente distinctio odio! Reprehenderit, nesciunt hic
-			eum dolorem itaque eaque maxime nisi? Fuga minima odio iure! Debitis, blanditiis?
+			{{ recipe.description }}
 		</p>
 		<!-- haaaaaaaaaaa -->
 		<div class="py-10">
 			<h1 class="text-3xl font-bold">Steps</h1>
 			<hr class="mb-8 mt-4 h-px border-0 bg-gray-200 dark:bg-gray-700" />
+			<!-- <pre>{{ recipe | json }}</pre> -->
 			<ol class="relative border-s border-gray-200 text-gray-600 dark:border-gray-700 dark:text-gray-400">
+				@for (step of recipe.steps; track $index) {
 				<li class="mb-10 ms-6">
 					<span
 						class="absolute -start-4 flex h-8 w-8 items-center justify-center rounded-full bg-green-200 ring-4 ring-white dark:bg-green-900 dark:ring-gray-900">
-						1
+						{{ step.stepNumber }}
 					</span>
-					<h3 class="font-medium leading-tight">Step 1</h3>
+					<h3 class="font-medium leading-tight">Step {{ step.stepNumber }}</h3>
 					<p class="text-sm">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias sit sed ad perferendis odit placeat voluptas. Tempore quod, ad tenetur
-						repellendus vero maiores consequuntur unde dolorem molestias vel soluta. Odit. Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-						Repudiandae sint corrupti ipsum dolor, sit amet consectetur adipisicing elit. Eum soluta unde quae sint quod tenetur rem quo blanditiis
-						ad? Corporis, facere. Recusandae expedita dolorum illum error incidunt enim dolore eum!
+						{{ step.step }}
 					</p>
 				</li>
-				<li class="mb-10 ms-6">
-					<span
-						class="absolute -start-4 flex h-8 w-8 items-center justify-center rounded-full bg-green-200 ring-4 ring-white dark:bg-gray-700 dark:ring-gray-900">
-						2
-					</span>
-					<h3 class="font-medium leading-tight">Step 2</h3>
-					<p class="text-sm">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias sit sed ad perferendis odit placeat voluptas. Tempore quod, ad tenetur
-						repellendus eum. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum soluta unde quae sint quod tenetur rem quo blanditiis ad?
-						Corporis, facere. Recusandae expedita dolorum illum error incidunt enim dolore eum!
-					</p>
-				</li>
-				<li class="mb-10 ms-6">
-					<span
-						class="absolute -start-4 flex h-8 w-8 items-center justify-center rounded-full bg-green-200 ring-4 ring-white dark:bg-gray-700 dark:ring-gray-900">
-						3
-					</span>
-					<h3 class="font-medium leading-tight">Step 3</h3>
-					<p class="text-sm">Lorem ipsum dolor sit amet, Recusandae expedita dolorum illum error incidunt enim dolore eum!</p>
-				</li>
-				<li class="ms-6">
-					<span
-						class="absolute -start-4 flex h-8 w-8 items-center justify-center rounded-full bg-green-200 ring-4 ring-white dark:bg-gray-700 dark:ring-gray-900">
-						4
-					</span>
-					<h3 class="font-medium leading-tight">Step 4</h3>
-					<p class="text-sm">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias sit sed ad perferendis odit placeat voluptas. Tempore quod, ad tenetur
-						repellendus vero maiores consequuntur unde dolorem molestias vel soluta.
-					</p>
-				</li>
+				}
 			</ol>
 		</div>
 
@@ -128,12 +109,10 @@
 			<hr class="mb-8 mt-4 h-px border-0 bg-gray-200 dark:bg-gray-700" />
 			<div class="flex flex-col justify-between md:flex-row">
 				<div>
-					<app-comment></app-comment>
-					<app-comment></app-comment>
-					<app-comment></app-comment>
+					<app-comment [comments]="recipe.comments ?? []"></app-comment>
 				</div>
 				<form class="mx-auto min-w-80 max-w-lg">
-					<label for="message" class="mb-2 block font-medium text-gray-900 dark:text-white">Write a Review </label>
+					<label for="message" class="mb-2 block font-medium text-gray-900 dark:text-white">Write a Comment </label>
 					<div class="flex items-center pb-2 text-sm">
 						<span>Rate this recipe</span>
 						<svg class="ms-1 h-4 w-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
