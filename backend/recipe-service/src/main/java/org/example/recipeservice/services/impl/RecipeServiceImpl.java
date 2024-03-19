@@ -44,6 +44,31 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
+    public List<Recipe> getTopRecipes(int top) {
+        List<Recipe> recipes = repository.findRecipesWithLimit(top);
+        recipes.forEach(recipe -> recipe.getComments()
+                .forEach(comment -> comment
+                        .setUser(userRestRecipe
+                                .findUserById(comment
+                                        .getUserId()
+                                )
+                        )
+                )
+        );
+        recipes.forEach(recipe -> recipe.getFavorites()
+                .forEach(favorite -> favorite
+                        .setUser(userRestRecipe
+                                .findUserById(favorite
+                                        .getUserId()
+                                )
+                        )
+                )
+        );
+
+        return recipes;
+    }
+
+    @Override
     public Optional<Recipe> getRecipeByTitle(String title) {
         return repository.findByTitle(title);
     }
