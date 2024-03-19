@@ -4,6 +4,7 @@ import lombok.*;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -21,6 +22,8 @@ public class Recipe {
     private String title;
 
     private String description;
+
+    private LocalDateTime createdAt;
 
     @JsonIgnoreProperties("recipe")
     @OneToMany(mappedBy = "recipe",

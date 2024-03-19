@@ -2,7 +2,9 @@ package org.example.recipeservice.controllers;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.example.recipeservice.dtos.responses.ResponseRecipe;
 import org.example.recipeservice.entities.Recipe;
+import org.example.recipeservice.mappers.RecipeMapper;
 import org.example.recipeservice.services.RecipeService;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +18,7 @@ import java.util.Optional;
 public class RecipeController {
 
     private final RecipeService service;
+    private final RecipeMapper mapper;
 
     @GetMapping()
     public List<Recipe> getRecipes() {
@@ -23,8 +26,14 @@ public class RecipeController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Recipe> getRecipeById(@PathVariable Long id) {
-        return service.getRecipeById(id);
+    public Optional<ResponseRecipe> getRecipeById(@PathVariable Long id) {
+        return service.getRecipeById(id).map(mapper::toResponseRecipe);
+    }
+
+    @GetMapping("/top/{top}")
+    public List<Recipe> getTopRecipes(@PathVariable int top) {
+        System.out.println("Top: " + top);
+        return service.getTopRecipes(top);
     }
 
     @GetMapping("/title/{title}")
