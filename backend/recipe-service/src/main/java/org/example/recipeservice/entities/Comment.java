@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 
 @Entity
 @Getter
@@ -20,6 +22,8 @@ public class Comment {
     private Long id;
 
     private String content;
+
+    private LocalDateTime createdAt;
 
     private Long userId;
 
