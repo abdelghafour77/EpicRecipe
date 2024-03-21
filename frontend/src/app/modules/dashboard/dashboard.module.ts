@@ -10,9 +10,11 @@ import { CategoriesComponent } from "./components/categories/categories.componen
 import { UsersComponent } from "./components/users/users.component";
 import { TagsComponent } from "./components/tags/tags.component";
 import { ReportsComponent } from "./components/reports/reports.component";
+import { RecipeFormComponent } from './components/recipes/recipe-form/recipe-form.component';
+import { RecipeListComponent } from './components/recipes/recipe-list/recipe-list.component';
 
 @NgModule({
-	declarations: [DashboardComponent, DashBodyComponent, RecipesComponent, CategoriesComponent, UsersComponent, TagsComponent, ReportsComponent],
+	declarations: [DashboardComponent, DashBodyComponent, RecipesComponent, CategoriesComponent, UsersComponent, TagsComponent, ReportsComponent, RecipeFormComponent, RecipeListComponent],
 	imports: [CommonModule, RouterOutlet, DashboardRoutingModule, SharedModule],
 })
 export class DashboardModule {}
