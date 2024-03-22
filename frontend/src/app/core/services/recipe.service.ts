@@ -18,4 +18,8 @@ export class RecipeService {
 	getRecipeById(id: string): Observable<Recipe> {
 		return this.http.get<Recipe>(this.apiUrl + "/" + id);
 	}
+
+	getAllRecipes(): Observable<Recipe[]> {
+		return this.http.get<Recipe[]>(this.apiUrl);
+	}
 }
