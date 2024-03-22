@@ -1,5 +1,9 @@
 package org.example.recipeservice.mappers;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.example.recipeservice.dtos.responses.ResponseComment;
 import org.example.recipeservice.dtos.responses.ResponseRecipe;
 import org.example.recipeservice.dtos.responses.ResponseRecipeSteps;
@@ -8,8 +12,15 @@ import org.springframework.stereotype.Component;
 
 import java.util.stream.Collectors;
 
+@Getter
+@Setter
 @Component
+@AllArgsConstructor
+
 public class RecipeMapper {
+
+    private final IngredientMapper ingredientMapper;
+
 
     public ResponseRecipe toResponseRecipe(Recipe recipe) {
         return ResponseRecipe.builder()
@@ -17,9 +28,6 @@ public class RecipeMapper {
                 .title(recipe.getTitle())
                 .description(recipe.getDescription())
                 .createdAt(recipe.getCreatedAt())
-//                .category(recipe.getCategory().getName())
-//                .ingredients(recipe.getIngredients())
-//                .directions(recipe.getDirections())
                 .steps(recipe.getSteps().stream().map(step -> ResponseRecipeSteps.builder()
                         .id(step.getId())
                         .stepNumber(step.getStepNumber())
@@ -34,6 +42,11 @@ public class RecipeMapper {
                         .createdAt(comment.getCreatedAt())
                         .email(comment.getUser().getEmail())
                         .build()).collect(Collectors.toList()))
+                .favorites(recipe.getFavorites())
+                .ingredients(recipe.getIngredients().stream().map(ingredientMapper::toResponseIngredient).collect(Collectors.toList()))
+                .tags(recipe.getTags())
+                .category(recipe.getCategory())
+                .status(recipe.getStatus())
                 .build();
     }
 }
