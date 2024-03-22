@@ -1,6 +1,8 @@
-import { DatePipe } from "@angular/common";
 import { Comment } from "./comment";
 import { RecipeStep } from "./recipe-step";
+import { Favorite } from "./favorite";
+import { Ingredient } from "./ingredient";
+import { Tag } from "./tag";
 
 export interface RecipeInterface {
 	id?: number;
@@ -9,6 +11,10 @@ export interface RecipeInterface {
 	createdAt?: Date | undefined;
 	steps?: RecipeStep[];
 	comments?: Comment[];
+	favorites?: Favorite[];
+	ingredients?: Ingredient[];
+	tags?: Tag[];
+	status?: string;
 }
 
 export class Recipe implements RecipeInterface {
@@ -19,5 +25,9 @@ export class Recipe implements RecipeInterface {
 		public createdAt?: Date | undefined,
 		public steps?: RecipeStep[],
 		public comments?: Comment[],
+		public favorites?: Favorite[],
+		public ingredients?: Ingredient[],
+		public tags?: Tag[],
+		public status?: string,
 	) {}
 }

@@ -72,15 +72,28 @@
 				</th>
 				<td class="px-6 py-4">
 					<div class="flex items-center">
-						<span class="me-2 rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800 dark:bg-gray-700 dark:text-gray-300">
-							{{ recipe.createdAt | date : "dd/MM/yyyy" }}
+						@for (ingredient of recipe.ingredients; track $index) { @if ($index < 3) {
+						<span class="me-2 rounded-full bg-green-300 px-2.5 py-0.5 text-xs font-medium text-gray-800 dark:bg-gray-700 dark:text-gray-300">
+							{{ ingredient.name }}
 						</span>
+						} }
+
+						<!-- <span class="me-2 rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800 dark:bg-gray-700 dark:text-gray-300">
+							{{ recipe.createdAt | date : "dd/MM/yyyy" }}
+						</span> -->
 					</div>
 				</td>
 				<td class="px-6 py-4">
 					<div class="flex items-center">
-						<span class="me-2 rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800 dark:bg-gray-700 dark:text-gray-300">
-							Pending
+						<span
+							[ngClass]="{
+								'bg-gray-200 text-gray-800 dark:bg-gray-400 dark:text-gray-200': recipe.status === 'PENDING',
+								'bg-green-100 text-green-800 dark:bg-green-400 dark:text-green-200': recipe.status === 'APPROVED',
+								'bg-red-100 text-red-800 dark:bg-red-400 dark:text-red-200': recipe.status === 'REJECTED',
+								'bg-red-50 text-red-900 dark:bg-red-300 dark:text-red-300 ': recipe.status === 'DELETED'
+							}"
+							class="me-2 rounded-full px-2.5 py-0.5 text-xs font-medium">
+							{{ recipe.status }}
 						</span>
 					</div>
 				</td>
