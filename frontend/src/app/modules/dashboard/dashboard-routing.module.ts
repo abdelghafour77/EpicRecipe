@@ -7,6 +7,7 @@ import { CategoriesComponent } from "./components/categories/categories.componen
 import { UsersComponent } from "./components/users/users.component";
 import { TagsComponent } from "./components/tags/tags.component";
 import { ReportsComponent } from "./components/reports/reports.component";
+import { IngredientsComponent } from "./components/ingredients/ingredients.component";
 
 // const routes: Routes = [
 //   {
@@ -30,6 +31,7 @@ const routes: Routes = [
 		children: [
 			{ path: "", component: DashBodyComponent },
 			{ path: "recipes", component: RecipesComponent },
+			{ path: "ingredients", component: IngredientsComponent },
 			{ path: "categories", component: CategoriesComponent },
 			{ path: "users", component: UsersComponent },
 			{ path: "tags", component: TagsComponent },
