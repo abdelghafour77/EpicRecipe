@@ -3,6 +3,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import jakarta.persistence.*;
+import org.example.recipeservice.entities.enums.RecipeStatus;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -23,6 +24,9 @@ public class Recipe {
 
     private String description;
 
+    @Enumerated(EnumType.STRING)
+    private RecipeStatus status;
+
     private LocalDateTime createdAt;
 
     @JsonIgnoreProperties("recipe")
@@ -31,15 +35,15 @@ public class Recipe {
             orphanRemoval = true)
     private List<RecipeSteps> steps;
 
-//    @ManyToMany
-//    @JoinTable(name = "recipe_tags",
-//            joinColumns = @JoinColumn(name = "recipe_id"),
-//            inverseJoinColumns = @JoinColumn(name = "tag_id"))
-//    private List<Tag> tags;
+    @ManyToMany
+    @JoinTable(name = "recipe_tags",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    private List<Tag> tags;
 
-//    @ManyToOne
-//    @JoinColumn(name = "category_id")
-//    private Category category;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     @JsonIgnoreProperties("recipe")
     @OneToMany(mappedBy = "recipe",
@@ -53,11 +57,11 @@ public class Recipe {
             orphanRemoval = true)
     private List<Favorite> favorites;
 
-//    @ManyToMany
-//    @JoinTable(name = "recipe_ingredients",
-//            joinColumns = @JoinColumn(name = "recipe_id"),
-//            inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
-//    private List<Ingredient> ingredients;
+    @ManyToMany
+    @JoinTable(name = "recipe_ingredients",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
+    private List<Ingredient> ingredients;
 
 
 }

@@ -21,8 +21,8 @@ public class RecipeController {
     private final RecipeMapper mapper;
 
     @GetMapping()
-    public List<Recipe> getRecipes() {
-        return service.getAllRecipes();
+    public List<ResponseRecipe> getRecipes() {
+        return service.getAllRecipes().stream().map(mapper::toResponseRecipe).toList();
     }
 
     @GetMapping("/{id}")
@@ -31,14 +31,14 @@ public class RecipeController {
     }
 
     @GetMapping("/top/{top}")
-    public List<Recipe> getTopRecipes(@PathVariable int top) {
+    public List<ResponseRecipe> getTopRecipes(@PathVariable int top) {
         System.out.println("Top: " + top);
-        return service.getTopRecipes(top);
+        return service.getTopRecipes(top).stream().map(mapper::toResponseRecipe).toList();
     }
 
     @GetMapping("/title/{title}")
-    public Optional<Recipe> getRecipeByTitle(@PathVariable String title) {
-        return service.getRecipeByTitle(title);
+    public Optional<ResponseRecipe> getRecipeByTitle(@PathVariable String title) {
+        return service.getRecipeByTitle(title).map(mapper::toResponseRecipe);
     }
 
     @PostMapping()
