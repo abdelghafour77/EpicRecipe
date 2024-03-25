@@ -1,9 +1,11 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { LandingPageComponent } from "./shared/pages/landing-page/landing-page.component";
+import { DragAndDropComponent } from "./shared/components/drag-and-drop/drag-and-drop.component";
 
 const routes: Routes = [
 	{ path: "", component: LandingPageComponent },
+	{ path: "dnd", component: DragAndDropComponent },
 	{
 		path: "recipe",
 		loadChildren: () => import("./modules/recipe/recipe.module").then((m) => m.RecipeModule),
