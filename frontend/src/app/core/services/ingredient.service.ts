@@ -1,7 +1,11 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Ingredient } from "../models/ingredient";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+
+const httpOptions = {
+	headers: new HttpHeaders({ "Content-Type": "application/json" }),
+};
 
 @Injectable({
 	providedIn: "root",
@@ -13,5 +17,17 @@ export class IngredientService {
 
 	getAllIngredients(): Observable<Ingredient[]> {
 		return this.http.get<Ingredient[]>(this.apiUrl);
+	}
+
+	create(ingredient: Ingredient): Observable<Ingredient> {
+		return this.http.post<Ingredient>(this.apiUrl + "/save", ingredient, httpOptions);
+	}
+
+	update(ingredient: Ingredient): Observable<Ingredient> {
+		return this.http.put<Ingredient>(this.apiUrl + "/" + ingredient?.id + "/update", ingredient, httpOptions);
+	}
+
+	delete(ingredient: Ingredient): Observable<Ingredient> {
+		return this.http.delete<Ingredient>(this.apiUrl + "/" + ingredient?.id + "/delete", httpOptions);
 	}
 }
