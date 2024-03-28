@@ -1,23 +1,37 @@
-<div class="container" appDnd (fileDropped)="onFileDropped($event)">
-	<input type="file" accept="image/*" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event)" />
-	<img [src]="['./assets/img/dnd/ic-upload-file.svg']" alt="" />
-	<h3>Drag and drop file here</h3>
-	<h3>or</h3>
-	<label for="fileDropRef">Browse for file</label>
+<div
+	class="group relative mx-0 my-auto flex flex-col rounded-lg border-[5px] border-dashed border-mygreen-100 p-8 text-center duration-300 ease-in-out hover:border-mygreen-200"
+	appDnd
+	(fileDropped)="onFileDropped($event)">
+	<div class="mx-auto pb-4">
+		<img class="w-8" [src]="['./assets/img/dnd/ic-upload-file.svg']" alt="" />
+	</div>
+	<input
+		class="absolute left-0 top-0 z-[2] h-full w-full cursor-pointer opacity-0"
+		type="file"
+		id="fileDropRef"
+		accept="image/*"
+		#fileDropRef
+		multiple
+		(change)="fileBrowseHandler($event)" />
+	<h3 class="text-xl">Drag and drop file here</h3>
+	<h3 class="text-xl">or</h3>
+	<span for="fileDropRef" class="rounded-full bg-mygreen-200 px-4 py-2 text-white duration-300 ease-in-out group-hover:bg-mygreen-300"
+		>Browse for file</span
+	>
 </div>
-<div class="files-list">
-	<div class="single-file" *ngFor="let file of files; let i = index">
+<div class="mt-6">
+	<div class="mb-4 flex flex-grow items-center justify-between p-2" *ngFor="let file of files; let i = index">
 		<!-- <img [src]="['./assets/img/dnd/ic-file.svg']" width="45px" alt="file" /> -->
 		<img [src]="[file?.realFilePath]" width="45px" alt="file" />
-		<div class="info">
-			<h4 class="name">
+		<div class="ml-2 w-full">
+			<h4 class="m-0 text-sm font-medium text-gray-800">
 				{{ file?.file?.name }}
 			</h4>
-			<p class="size">
+			<p class="m-0 mb-1 text-xs font-medium text-gray-400">
 				{{ formatBytes(file?.file?.size ?? 0) }}
 			</p>
 			<app-progress [progress]="file?.progress ?? 0"></app-progress>
 		</div>
-		<img [src]="['./assets/img/dnd/ic-delete-file.svg']" class="delete" width="20px" alt="file" (click)="deleteFile(i)" />
+		<img [src]="['./assets/img/dnd/ic-delete-file.svg']" class="ml-2 cursor-pointer" width="20px" alt="file" (click)="deleteFile(i)" />
 	</div>
 </div>

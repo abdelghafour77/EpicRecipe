@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { Flowbite } from "app/core/config/flowbiteConfig";
 import { Category } from "app/core/models/category";
 import { Recipe } from "app/core/models/recipe";
 import { CategoryService } from "app/core/services/category.service";
@@ -8,6 +9,7 @@ import { CategoryService } from "app/core/services/category.service";
 	templateUrl: "./recipe-list.component.html",
 	styleUrl: "./recipe-list.component.css",
 })
+@Flowbite()
 export class RecipeListComponent implements OnInit {
 	@Input() recipes!: Recipe[];
 

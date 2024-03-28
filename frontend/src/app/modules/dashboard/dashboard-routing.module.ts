@@ -8,6 +8,7 @@ import { UsersComponent } from "./components/users/users.component";
 import { TagsComponent } from "./components/tags/tags.component";
 import { ReportsComponent } from "./components/reports/reports.component";
 import { IngredientsComponent } from "./components/ingredients/ingredients.component";
+import { AddRecipeComponent } from "./components/recipes/add-recipe/add-recipe.component";
 
 // const routes: Routes = [
 //   {
@@ -31,6 +32,7 @@ const routes: Routes = [
 		children: [
 			{ path: "", component: DashBodyComponent },
 			{ path: "recipes", component: RecipesComponent },
+			{ path: "recipes/new", component: AddRecipeComponent },
 			{ path: "ingredients", component: IngredientsComponent },
 			{ path: "categories", component: CategoriesComponent },
 			{ path: "users", component: UsersComponent },
