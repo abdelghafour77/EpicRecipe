@@ -23,7 +23,10 @@ import { UserFormComponent } from "./components/users/user-form/user-form.compon
 import { UserListComponent } from "./components/users/user-list/user-list.component";
 import { ReportListComponent } from "./components/reports/report-list/report-list.component";
 import { FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { AddRecipeComponent } from './components/recipes/add-recipe/add-recipe.component';
+import { AddRecipeComponent } from "./components/recipes/add-recipe/add-recipe.component";
+import { MultiSelectModule } from "primeng/multiselect";
+import { BrowserAnimationsModule, NoopAnimationsModule, provideAnimations } from "@angular/platform-browser/animations";
+import { FileUploadModule } from "primeng/fileupload";
 
 @NgModule({
 	declarations: [
@@ -46,8 +49,19 @@ import { AddRecipeComponent } from './components/recipes/add-recipe/add-recipe.c
 		UserFormComponent,
 		UserListComponent,
 		ReportListComponent,
-  AddRecipeComponent,
+		AddRecipeComponent,
 	],
-	imports: [CommonModule, RouterOutlet, DashboardRoutingModule, SharedModule, ReactiveFormsModule, SharedModule, FormsModule],
+	imports: [
+		CommonModule,
+		RouterOutlet,
+		DashboardRoutingModule,
+		SharedModule,
+		ReactiveFormsModule,
+		SharedModule,
+		FormsModule,
+		MultiSelectModule,
+		FileUploadModule,
+	],
+	providers: [provideAnimations()],
 })
 export class DashboardModule {}

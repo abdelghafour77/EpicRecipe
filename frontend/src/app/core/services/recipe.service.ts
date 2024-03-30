@@ -22,4 +22,7 @@ export class RecipeService {
 	getAllRecipes(): Observable<Recipe[]> {
 		return this.http.get<Recipe[]>(this.apiUrl);
 	}
+	saveRecipe(recipe: Recipe): Observable<any> {
+		return this.http.post<any>(this.apiUrl, recipe);
+	}
 }
