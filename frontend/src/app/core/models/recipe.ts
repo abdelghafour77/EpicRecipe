@@ -3,6 +3,7 @@ import { RecipeStep } from "./recipe-step";
 import { Favorite } from "./favorite";
 import { Ingredient } from "./ingredient";
 import { Tag } from "./tag";
+import { Category } from "./category";
 
 export interface RecipeInterface {
 	id?: number;
@@ -15,6 +16,8 @@ export interface RecipeInterface {
 	ingredients?: Ingredient[];
 	tags?: Tag[];
 	status?: string;
+	category?: Category;
+	image?: string;
 }
 
 export class Recipe implements RecipeInterface {
@@ -29,5 +32,7 @@ export class Recipe implements RecipeInterface {
 		public ingredients?: Ingredient[],
 		public tags?: Tag[],
 		public status?: string,
+		public category?: Category,
+		public image?: string,
 	) {}
 }

@@ -1,20 +1,41 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
+import { Flowbite } from "app/core/config/flowbiteConfig";
+import { Category } from "app/core/models/category";
 import { Recipe } from "app/core/models/recipe";
+import { CategoryService } from "app/core/services/category.service";
 
 @Component({
 	selector: "app-recipe-list",
 	templateUrl: "./recipe-list.component.html",
 	styleUrl: "./recipe-list.component.css",
 })
-export class RecipeListComponent {
-	onDeleteRecipe(_t32: Recipe) {
-		// open drawer with delete confirmation
-	}
-	onEditRecipe(_t32: Recipe) {
-		// throw new Error("Method not implemented.");
-		// open drawer with recipe form
-	}
+@Flowbite()
+export class RecipeListComponent implements OnInit {
 	@Input() recipes!: Recipe[];
 
-	constructor() {}
+	toSave: Recipe = new Recipe();
+
+	categories: Category[] = [];
+
+	ngOnInit(): void {
+		this.categoryService.getCategories().subscribe((categories) => {
+			this.categories = categories;
+		});
+	}
+
+	constructor(private categoryService: CategoryService) {}
+
+	handleClick(recipe: Recipe) {
+		this.toSave.id = recipe.id;
+		this.toSave.title = recipe.title;
+		this.toSave.description = recipe.description;
+		this.toSave.ingredients = recipe.ingredients;
+	}
+
+	onSubmit() {
+		throw new Error("Method not implemented.");
+	}
+	onDelete() {
+		throw new Error("Method not implemented.");
+	}
 }

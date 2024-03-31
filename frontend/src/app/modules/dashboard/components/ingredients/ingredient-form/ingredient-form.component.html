@@ -1,1 +1,66 @@
-<p>ingredient-form works!</p>
+<!-- drawer init and toggle -->
+<div class="flex justify-between pb-8">
+	<span class="text-3xl font-bold text-gray-800"> Ingredents</span>
+	<div class="text-center">
+		<button
+			class="mb-2 flex justify-between rounded-lg bg-mygreen-300 px-5 py-2.5 text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300 hover:bg-mygreen-700 dark:bg-mygreen-300 dark:focus:ring-mygreen-700 dark:hover:bg-mygreen-700"
+			type="button"
+			data-drawer-target="drawer-right-example"
+			data-drawer-show="drawer-right-example"
+			data-drawer-placement="right"
+			aria-controls="drawer-right-example">
+			ADD
+		</button>
+	</div>
+</div>
+<!-- drawer component -->
+<div
+	id="drawer-right-example"
+	class="fixed right-0 top-0 z-50 h-screen w-80 translate-x-full overflow-y-auto bg-white p-4 transition-transform dark:bg-gray-800 md:w-96"
+	tabindex="-1"
+	aria-labelledby="drawer-right-label">
+	<h5 id="drawer-right-label" class="mb-4 inline-flex items-center text-base font-semibold text-gray-500 dark:text-gray-400">Add New Ingredients</h5>
+
+	<!--  -->
+	<form (submit)="onSubmit()">
+		<div class="grid grid-cols-1 gap-4">
+			<div class="flex flex-col">
+				<label for="name" class="text-sm font-semibold text-gray-600 dark:text-gray-300">Name</label>
+				<input
+					[(ngModel)]="toSave.name"
+					name="name"
+					type="text"
+					id="name"
+					class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" />
+			</div>
+
+			<div class="flex flex-col">
+				<label for="unityType" class="text-sm font-semibold text-gray-600 dark:text-gray-300">Unit</label>
+				<select
+					[(ngModel)]="toSave.unityType"
+					id="unityType"
+					name="unityType"
+					class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+					<option value="" disabled selected>Select Unit</option>
+					@for (unitType of unitTypes; track $index) {
+					<option [value]="unitType">{{ unitType }}</option>
+					}
+				</select>
+			</div>
+			<div class="flex flex-col">
+				<label for="description" class="text-sm font-semibold text-gray-600 dark:text-gray-300">Description</label>
+				<textarea
+					id="description"
+					class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"></textarea>
+			</div>
+			<app-drag-and-drop></app-drag-and-drop>
+			<div class="flex justify-end">
+				<button
+					type="submit"
+					class="mt-4 flex justify-between rounded-lg bg-mygreen-300 px-5 py-2.5 text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300 hover:bg-mygreen-700 dark:bg-mygreen-500 dark:focus:ring-mygreen-700 dark:hover:bg-mygreen-500">
+					ADD
+				</button>
+			</div>
+		</div>
+	</form>
+</div>
