@@ -1,7 +1,10 @@
 <div class="min-h-screen">
 	<div class="relative isolate flex h-96 flex-col justify-end overflow-hidden pb-8 pl-8 print:hidden">
 		<!-- src="https://via.placeholder.com/1920x1080" -->
-		<img class="absolute inset-0 h-full w-screen object-cover" src="../../../../../assets/img/pizza.jpg" alt="University of Southern California" />
+		<img
+			class="absolute inset-0 h-full w-screen object-cover"
+			[src]="['assets/public/' + recipe.title + '/' + recipe.image]"
+			alt="University of Southern California" />
 		<div class="absolute inset-0 bg-gradient-to-t from-black via-black/40"></div>
 		<h3 class="z-10 mt-3 text-3xl font-bold text-white">{{ recipe.title }}</h3>
 		<div class="z-10 flex justify-between gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">

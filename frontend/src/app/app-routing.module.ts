@@ -5,7 +5,6 @@ import { DragAndDropComponent } from "./shared/components/drag-and-drop/drag-and
 
 const routes: Routes = [
 	{ path: "", component: LandingPageComponent },
-	{ path: "dnd", component: DragAndDropComponent },
 	{
 		path: "recipe",
 		loadChildren: () => import("./modules/recipe/recipe.module").then((m) => m.RecipeModule),
