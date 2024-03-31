@@ -7,6 +7,7 @@ import org.example.recipeservice.entities.Recipe;
 import org.example.recipeservice.mappers.RecipeMapper;
 import org.example.recipeservice.services.RecipeService;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -44,6 +45,13 @@ public class RecipeController {
     @PostMapping()
     public Recipe saveRecipe(@RequestBody Recipe recipe) {
         return service.saveRecipe(recipe);
+    }
+
+    @PostMapping("/upload")
+    public void uploadImage(@RequestParam("image") MultipartFile imageFile,
+                            @RequestParam("recipeId") String recipeId,
+                            @RequestParam("fileName") String fileName) {
+        service.uploadImage(imageFile, recipeId, fileName);
     }
 
     @PutMapping("/{id}")
