@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Recipe } from "../models/recipe";
@@ -22,7 +22,11 @@ export class RecipeService {
 	getAllRecipes(): Observable<Recipe[]> {
 		return this.http.get<Recipe[]>(this.apiUrl);
 	}
-	saveRecipe(recipe: Recipe): Observable<any> {
-		return this.http.post<any>(this.apiUrl, recipe);
+	saveRecipe(recipe: Recipe): Observable<Recipe> {
+		console.log("Recipe to save from service :", recipe);
+		return this.http.post<Recipe>(this.apiUrl, recipe);
+	}
+	uploadFile(formData: FormData): Observable<any> {
+		return this.http.post<any>(this.apiUrl + "/upload", formData);
 	}
 }

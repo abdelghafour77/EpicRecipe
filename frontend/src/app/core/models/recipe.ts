@@ -17,7 +17,7 @@ export interface RecipeInterface {
 	tags?: Tag[];
 	status?: string;
 	category?: Category;
-	image?: string | File;
+	image?: string;
 }
 
 export class Recipe implements RecipeInterface {
@@ -33,6 +33,6 @@ export class Recipe implements RecipeInterface {
 		public tags?: Tag[],
 		public status?: string,
 		public category?: Category,
-		public image?: string | File,
+		public image?: string,
 	) {}
 }

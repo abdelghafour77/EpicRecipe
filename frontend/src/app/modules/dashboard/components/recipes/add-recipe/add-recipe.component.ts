@@ -21,6 +21,7 @@ export class AddRecipeComponent implements OnInit {
 	categories: Category[] = [];
 	tags: Tag[] = [];
 	steps: RecipeStep[] = [];
+	image?: File;
 
 	constructor(private recipeService: RecipeService, private categorieService: CategoryService, private tagService: TagService) {
 		this.toSave = new Recipe();
@@ -47,11 +48,7 @@ export class AddRecipeComponent implements OnInit {
 	}
 	onFileSelected(event: any) {
 		const file = event.target.files[0] as File;
-		this.toSave.image = file;
-	}
-	onFileSelectedStep(event: any, index: number) {
-		const file = event.target.files[0] as File;
-		this.steps[index].image = file; // Set image for the corresponding recipe step
+		this.image = file;
 	}
 	onSubmit() {
 		// get the category object using the selected category id
@@ -62,21 +59,59 @@ export class AddRecipeComponent implements OnInit {
 		const tags: Tag[] = this.selectedTags.map((id) => this.tags.find((t) => t.id === id)).filter((tag) => tag !== undefined) as Tag[];
 		this.toSave.tags = tags;
 
+		const imageExt = this.image?.name.split(".").pop();
+		this.toSave.image = Date.now() + (this.toSave.title || "") + "." + imageExt;
+
+		console.log("image name:", this.toSave.image);
+
 		// get array of steps
-		console.log("Steps:", this.steps);
-		this.toSave.steps = this.steps;
+		// console.log("Steps:", this.steps);
+		// this.toSave.steps = this.steps;
 
 		console.log("Recipe to save:", this.toSave);
 
-		// this.recipeService.saveRecipe(this.toSave).subscribe(
-		// 	(response) => {
-		// 		console.log("Recipe saved successfully:", response);
-		// 	},
-		// 	(error) => {
-		// 		console.error("Error saving recipe:", error);
-		// 	},
-		// );
+		// const fakeRecipe = {
+		// 	title: "title",
+		// 	description: "description",
+		// 	createdAt: new Date(),
+		// 	steps: [
+		// 		{ step: "step 1", image: "image 1" },
+		// 		{ step: "step 2", image: "image 2" },
+		// 	],
+		// 	category: { id: 1, name: "Italian" },
+		// 	tags: [
+		// 		{ id: 2, name: "Vegan" },
+		// 		{ id: 3, name: "Gluten-Free" },
+		// 	],
+		// 	image: Date.now() + "title",
+		// };
+
+		this.recipeService.saveRecipe(this.toSave).subscribe(
+			(response) => {
+				console.log("Recipe saved successfully:", response);
+				this.uploadFile(response.id || 0, response.image || "");
+			},
+			(error) => {
+				console.error("Error saving recipe:", error);
+			},
+		);
 	}
-	onCancel() {}
-	onChange(event: any) {}
+	uploadFile(id: number, fileName: string) {
+		const formData = new FormData();
+		if (this.image) {
+			formData.append("image", this.image);
+		}
+
+		formData.append("recipeId", id.toString());
+		formData.append("fileName", fileName);
+
+		this.recipeService.uploadFile(formData).subscribe(
+			(response) => {
+				console.log("File uploaded successfully:", response);
+			},
+			(error) => {
+				console.error("Error uploading file:", error);
+			},
+		);
+	}
 }
