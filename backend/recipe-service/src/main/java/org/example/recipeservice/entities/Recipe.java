@@ -24,6 +24,8 @@ public class Recipe {
 
     private String description;
 
+    private String image;
+
     @Enumerated(EnumType.STRING)
     private RecipeStatus status;
 

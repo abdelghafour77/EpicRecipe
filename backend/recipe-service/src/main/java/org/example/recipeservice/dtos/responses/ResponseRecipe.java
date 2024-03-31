@@ -38,4 +38,6 @@ public class ResponseRecipe {
     private Category category;
 
     private RecipeStatus status;
+
+    private String image;
 }
