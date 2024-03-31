@@ -12,6 +12,7 @@ import org.example.recipeservice.entities.enums.UnityType;
 public class RequestIngredient {
     private String name;
     private UnityType unityType;
+    private String description;
 
 
 }

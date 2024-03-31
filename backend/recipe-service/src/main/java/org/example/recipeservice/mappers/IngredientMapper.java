@@ -10,7 +10,9 @@ public class IngredientMapper {
 
     public ResponseIngredient toResponseIngredient(Ingredient ingredient) {
         return ResponseIngredient.builder()
+                .id(ingredient.getId())
                 .name(ingredient.getName())
+                .description(ingredient.getDescription())
                 .unityType(ingredient.getUnityType())
                 .build();
     }
@@ -19,6 +21,7 @@ public class IngredientMapper {
         return Ingredient.builder()
                 .name(requestIngredient.getName())
                 .unityType(requestIngredient.getUnityType())
+                .description(requestIngredient.getDescription())
                 .build();
     }
 

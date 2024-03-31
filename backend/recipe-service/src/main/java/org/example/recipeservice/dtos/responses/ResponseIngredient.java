@@ -10,6 +10,8 @@ import org.example.recipeservice.entities.enums.UnityType;
 @Getter
 @Setter
 public class ResponseIngredient {
+    private Long id;
     private String name;
     private UnityType unityType;
+    private String description;
 }
