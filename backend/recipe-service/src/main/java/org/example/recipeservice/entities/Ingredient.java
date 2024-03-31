@@ -20,6 +20,8 @@ public class Ingredient {
 
     private String name;
 
+    private String description;
+
     @Enumerated(EnumType.STRING)
     private UnityType unityType;
 

@@ -2,6 +2,7 @@ package org.example.recipeservice.services;
 
 
 import org.example.recipeservice.entities.Recipe;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,6 +19,8 @@ public interface RecipeService {
     Optional<Recipe> getRecipeById(Long id);
 
     Recipe saveRecipe(Recipe recipe);
+
+    void uploadImage(MultipartFile imageFile, String recipeId,String fileName);
 
     Recipe updateRecipe(Long id, Recipe recipe);
 

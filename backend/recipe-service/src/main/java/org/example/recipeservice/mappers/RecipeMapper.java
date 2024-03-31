@@ -28,6 +28,7 @@ public class RecipeMapper {
                 .title(recipe.getTitle())
                 .description(recipe.getDescription())
                 .createdAt(recipe.getCreatedAt())
+                .image(recipe.getImage())
                 .steps(recipe.getSteps().stream().map(step -> ResponseRecipeSteps.builder()
                         .id(step.getId())
                         .stepNumber(step.getStepNumber())
