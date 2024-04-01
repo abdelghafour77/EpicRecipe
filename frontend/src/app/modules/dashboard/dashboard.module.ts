@@ -25,6 +25,8 @@ import { ReportListComponent } from "./components/reports/report-list/report-lis
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AddRecipeComponent } from "./components/recipes/add-recipe/add-recipe.component";
 import { MultiSelectModule } from "primeng/multiselect";
+import { FileUploadModule } from "primeng/fileupload";
+import { UpdateRecipeComponent } from './components/recipes/update-recipe/update-recipe.component';
 @NgModule({
 	declarations: [
 		DashboardComponent,
@@ -47,7 +49,8 @@ import { MultiSelectModule } from "primeng/multiselect";
 		UserListComponent,
 		ReportListComponent,
 		AddRecipeComponent,
+  UpdateRecipeComponent,
 	],
-	imports: [CommonModule, RouterOutlet, DashboardRoutingModule, SharedModule, ReactiveFormsModule, FormsModule, MultiSelectModule],
+	imports: [CommonModule, RouterOutlet, DashboardRoutingModule, SharedModule, ReactiveFormsModule, FormsModule, MultiSelectModule, FileUploadModule],
 })
 export class DashboardModule {}
