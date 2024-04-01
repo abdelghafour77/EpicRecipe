@@ -65,6 +65,6 @@ management:
         include: health,info,refresh
 
 upload:
-  path: C:/EPICRECIPE/
+  path: C:\Users\noone\Desktop\EpicRecipe\frontend\src\assets\public\
 
 

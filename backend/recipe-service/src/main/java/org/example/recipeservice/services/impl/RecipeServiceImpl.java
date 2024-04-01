@@ -1,9 +1,12 @@
 package org.example.recipeservice.services.impl;
 
 import lombok.AllArgsConstructor;
+import org.example.recipeservice.dtos.requests.RequestRecipe;
 import org.example.recipeservice.entities.Recipe;
+import org.example.recipeservice.entities.RecipeSteps;
 import org.example.recipeservice.entities.enums.RecipeStatus;
 import org.example.recipeservice.repository.RecipeRepository;
+import org.example.recipeservice.repository.RecipeStepsRepository;
 import org.example.recipeservice.services.RecipeService;
 import org.example.recipeservice.users.UserRestRecipe;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +20,7 @@ import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class RecipeServiceImpl implements RecipeService {
@@ -27,11 +31,14 @@ public class RecipeServiceImpl implements RecipeService {
     private final RecipeRepository repository;
 
     private final UserRestRecipe userRestRecipe;
+    private final RecipeStepsRepository recipeStepsRepository;
 
-    public RecipeServiceImpl(@Value("${upload.path}") String uploadPath, RecipeRepository repository, UserRestRecipe userRestRecipe) {
+    public RecipeServiceImpl(@Value("${upload.path}") String uploadPath, RecipeRepository repository, UserRestRecipe userRestRecipe,
+                             RecipeStepsRepository recipeStepsRepository) {
         this.uploadPath = uploadPath;
         this.repository = repository;
         this.userRestRecipe = userRestRecipe;
+        this.recipeStepsRepository = recipeStepsRepository;
     }
 
     @Override
@@ -114,10 +121,30 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
-    public Recipe saveRecipe(Recipe recipe) {
-        recipe.setCreatedAt(LocalDateTime.now());
-        recipe.setStatus(RecipeStatus.APPROVED);
-        return repository.save(recipe);
+    public Recipe saveRecipe(RequestRecipe recipe) {
+
+        Recipe newRecipe = Recipe.builder()
+                .title(recipe.getTitle())
+                .description(recipe.getDescription())
+                .ingredients(recipe.getIngredients())
+                .image(recipe.getImage())
+                .tags(recipe.getTags())
+                .category(recipe.getCategory())
+                .createdAt(LocalDateTime.now())
+                .status(RecipeStatus.APPROVED)
+                .build();
+
+//        save all steps
+        List<RecipeSteps> steps = recipe.getSteps().stream()
+                .map(step -> recipeStepsRepository.save(RecipeSteps.builder()
+                        .step(step.getStep())
+                        .stepNumber(step.getStepNumber())
+                        .recipe(newRecipe)
+                        .build()))
+                .collect(Collectors.toList());
+        System.out.println(newRecipe);
+
+        return repository.save(newRecipe);
     }
 
     @Override
@@ -125,11 +152,8 @@ public class RecipeServiceImpl implements RecipeService {
         try {
             Optional<Recipe> recipe = repository.findById(Long.parseLong(recipeId));
             if (!imageFile.isEmpty()) {
-                String folderName = recipe.get().getTitle();
-                Path path = Paths.get(uploadPath + folderName);
-                if (!Files.exists(path)) {
-                    Files.createDirectory(path);
-                }
+                Path path = Paths.get(uploadPath);
+
                 String filename = StringUtils.cleanPath(fileName);
 
                 try {

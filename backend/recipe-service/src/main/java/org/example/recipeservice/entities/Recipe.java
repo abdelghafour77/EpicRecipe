@@ -32,9 +32,7 @@ public class Recipe {
     private LocalDateTime createdAt;
 
     @JsonIgnoreProperties("recipe")
-    @OneToMany(mappedBy = "recipe",
-            cascade = CascadeType.PERSIST,
-            orphanRemoval = true)
+    @OneToMany(mappedBy = "recipe")
     private List<RecipeSteps> steps;
 
     @ManyToMany

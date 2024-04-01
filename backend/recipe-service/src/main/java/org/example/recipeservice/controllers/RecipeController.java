@@ -2,9 +2,11 @@ package org.example.recipeservice.controllers;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.example.recipeservice.dtos.requests.RequestRecipe;
 import org.example.recipeservice.dtos.responses.ResponseRecipe;
 import org.example.recipeservice.entities.Recipe;
 import org.example.recipeservice.mappers.RecipeMapper;
+import org.example.recipeservice.repository.RecipeRepository;
 import org.example.recipeservice.services.RecipeService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -43,7 +45,7 @@ public class RecipeController {
     }
 
     @PostMapping()
-    public Recipe saveRecipe(@RequestBody Recipe recipe) {
+    public Recipe saveRecipe(@RequestBody RequestRecipe recipe) {
         return service.saveRecipe(recipe);
     }
 
