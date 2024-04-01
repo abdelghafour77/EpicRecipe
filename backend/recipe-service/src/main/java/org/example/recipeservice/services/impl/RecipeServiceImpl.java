@@ -1,6 +1,5 @@
 package org.example.recipeservice.services.impl;
 
-import lombok.AllArgsConstructor;
 import org.example.recipeservice.dtos.requests.RequestRecipe;
 import org.example.recipeservice.entities.Recipe;
 import org.example.recipeservice.entities.RecipeSteps;
@@ -181,6 +180,8 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     public void deleteRecipe(Long id) {
+        Optional<Recipe> recipe = repository.findById(id);
+        recipe.ifPresent(value -> value.getSteps().forEach(step -> recipeStepsRepository.deleteById(step.getId())));
         repository.deleteById(id);
     }
 }
