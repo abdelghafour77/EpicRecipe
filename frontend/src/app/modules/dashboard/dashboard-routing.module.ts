@@ -9,22 +9,8 @@ import { TagsComponent } from "./components/tags/tags.component";
 import { ReportsComponent } from "./components/reports/reports.component";
 import { IngredientsComponent } from "./components/ingredients/ingredients.component";
 import { AddRecipeComponent } from "./components/recipes/add-recipe/add-recipe.component";
+import { UpdateRecipeComponent } from "./components/recipes/update-recipe/update-recipe.component";
 
-// const routes: Routes = [
-//   {
-//     path: '',
-//     component: DashboardComponent,
-//     children: [
-//       { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
-//     //   { path: 'sign-in', component: SignInComponent, data: { returnUrl: window.location.pathname } },
-//     //   { path: 'sign-up', component: SignUpComponent },
-//     //   { path: 'forgot-password', component: ForgotPasswordComponent },
-//     //   { path: 'new-password', component: NewPasswordComponent },
-//     //   { path: 'two-steps', component: TwoStepsComponent },
-//       { path: '**', redirectTo: 'sign-in', pathMatch: 'full' },
-//     ],
-//   },
-// ];
 const routes: Routes = [
 	{
 		path: "",
@@ -33,6 +19,7 @@ const routes: Routes = [
 			{ path: "", component: DashBodyComponent },
 			{ path: "recipes", component: RecipesComponent },
 			{ path: "recipes/new", component: AddRecipeComponent },
+			{ path: "recipes/:id/update", component: UpdateRecipeComponent },
 			{ path: "ingredients", component: IngredientsComponent },
 			{ path: "categories", component: CategoriesComponent },
 			{ path: "users", component: UsersComponent },

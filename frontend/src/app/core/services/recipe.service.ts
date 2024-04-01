@@ -29,4 +29,7 @@ export class RecipeService {
 	uploadFile(formData: FormData): Observable<any> {
 		return this.http.post<any>(this.apiUrl + "/upload", formData);
 	}
+	updateRecipe(recipe: Recipe): Observable<Recipe> {
+		return this.http.put<Recipe>(this.apiUrl + "/" + recipe.id, recipe);
+	}
 }

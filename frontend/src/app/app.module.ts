@@ -12,6 +12,7 @@ import { CardAboutUsComponent } from "./shared/components/card-about-us/card-abo
 import { LandingPageComponent } from "./shared/pages/landing-page/landing-page.component";
 import { SharedModule } from "./shared/shared.module";
 import { DatePipe } from "@angular/common";
+import { provideAnimations } from "@angular/platform-browser/animations";
 
 function initializeKeycloak(keycloak: KeycloakService) {
 	return () =>
@@ -32,6 +33,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
 	declarations: [AppComponent, HeroSectionComponent, CardDisheComponent, CardAboutUsComponent, LandingPageComponent],
 	imports: [BrowserModule, AppRoutingModule, KeycloakAngularModule, HttpClientModule, SharedModule],
 	providers: [
+		provideAnimations(),
 		DatePipe,
 		{ provide: LOCALE_ID, useValue: "en-US" },
 		{
