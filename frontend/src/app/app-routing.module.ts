@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { LandingPageComponent } from "./shared/pages/landing-page/landing-page.component";
 import { DragAndDropComponent } from "./shared/components/drag-and-drop/drag-and-drop.component";
+import { AdminGuard } from "./core/guards/admin.guard";
 
 const routes: Routes = [
 	{ path: "", component: LandingPageComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
 	{
 		path: "dashboard",
 		loadChildren: () => import("./modules/dashboard/dashboard.module").then((m) => m.DashboardModule),
+		canActivate: [AdminGuard],
 	},
 	{
 		path: "auth",
