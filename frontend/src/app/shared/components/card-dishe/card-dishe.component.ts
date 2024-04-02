@@ -10,4 +10,7 @@ export class CardDisheComponent {
 	@Input() recipes!: Recipe[];
 
 	constructor() {}
+	getRandomNumber(): number {
+		return Math.floor(Math.random() * 4) + 1;
+	}
 }

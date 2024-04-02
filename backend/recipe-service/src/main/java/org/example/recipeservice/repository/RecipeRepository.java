@@ -14,6 +14,6 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long> {
 
     Optional<Recipe> findByTitle(String title);
 
-    @Query(value = "SELECT * FROM recipe ORDER BY id LIMIT ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM recipe ORDER BY id DESC LIMIT ?1", nativeQuery = true)
     List<Recipe> findRecipesWithLimit(int limit);
 }

@@ -23,7 +23,7 @@
 				<img class="h-40 w-40 rounded-full object-cover" alt="" [src]="['assets/public/' + recipe.image]" />
 			</div>
 			<div class="text-2xl font-semibold text-black">{{ recipe.title }}</div>
-			<div class="text-sm font-semibold text-gray-800">{{ recipe.description }}</div>
+			<div class="w-44 truncate text-sm font-semibold text-gray-800" title="{{ recipe.description }}">{{ recipe.description }}</div>
 			<div class="flex justify-between">
 				<div class="flex items-center">
 					<!-- <img  alt="" src="../../../../assets/img/fi-sr-star.png" /> -->

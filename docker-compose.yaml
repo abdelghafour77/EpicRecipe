@@ -1,38 +1,70 @@
-version: '3'
+version: '3.8'
+
 services:
-
-  database:
-    image: mysql:8.2.0
-    environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
-      - MYSQL_DATABASE=epicrecipe
+  mysql:
+    image: mysql:latest
+    container_name: mysql_db
     ports:
-      - 127.0.0.1:3306:3306
-    command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8mb4 --explicit_defaults_for_timestamp
-    healthcheck:
-      test: [ 'CMD', 'mysql', '-e', 'SHOW DATABASES;' ]
-      interval: 5s
-      timeout: 5s
-      retries: 10
-
-  backend:
-    build:
-      context: /backend
-    depends_on:
-      - database
+      - "3306:3306"
     environment:
-      - DATABASE_HOST=database
-      - SPRING_DATASOURCE_URL=jdbc:mysql://database:3306/epicrecipe
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-    ports:
-      - "8081:8081"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"  # Enable empty password
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: epicrecipe
 
-  frontend:
+  keycloak:
+    image: quay.io/keycloak/keycloak:15.0.2
+    container_name: keycloak_auth
+    ports:
+      - "9090:9090"
+    environment:
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      DB_VENDOR: h2
+
+  account-service:
     build:
-      context: /frontend
-    depends_on:
-      - backend
+      context: ./backend/account-service
+      dockerfile: Dockerfile
+    container_name: account-service
+    ports:
+      - "8082:8082"
+
+  config-service:
+    build:
+      context: ./backend/config-service
+      dockerfile: Dockerfile
+    container_name: config-service
+    ports:
+      - "8088:8088"
+
+  discovery-service:
+    build:
+      context: ./backend/discovery-service
+      dockerfile: Dockerfile
+    container_name: discovery-service
+    ports:
+      - "8761:8761"
+
+  gateway-service:
+    build:
+      context: ./backend/gateway-service
+      dockerfile: Dockerfile
+    container_name: gateway-service
+    ports:
+      - "8888:8888"
+
+  recipe-service:
+    build:
+      context: ./backend/recipe-service
+      dockerfile: Dockerfile
+    container_name: recipe-service
+    ports:
+      - "8083:8083"
+
+  angular-frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: angular-frontend
     ports:
       - "4200:80"

@@ -1,4 +1,4 @@
-package org.example.recipeservice;
+package org.example.recipeservice.services.impl;
 
 import org.example.recipeservice.dtos.requests.RequestRecipe;
 import org.example.recipeservice.entities.*;
@@ -99,6 +99,11 @@ public class RecipeServiceImplTest {
 
         assertThrows(Exception.class, () -> recipeService.saveRecipe(requestRecipe));
     }
+
+
+
+
+
 
 //    @Test
 //    public void test_create_recipe() {

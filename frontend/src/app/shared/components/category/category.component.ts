@@ -10,4 +10,7 @@ export class CategoryComponent {
 	@Input() categories!: Category[];
 
 	constructor() {}
+	getRandomNumber(): number {
+		return Math.floor(Math.random() * 4) + 1;
+	}
 }
