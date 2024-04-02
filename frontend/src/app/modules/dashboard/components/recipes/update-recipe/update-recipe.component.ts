@@ -1,4 +1,5 @@
 import { Component, ElementRef, QueryList, ViewChildren } from "@angular/core";
+import { Router } from "@angular/router";
 import { Category } from "app/core/models/category";
 import { Ingredient } from "app/core/models/ingredient";
 import { Recipe } from "app/core/models/recipe";
@@ -35,6 +36,7 @@ export class UpdateRecipeComponent {
 		private categorieService: CategoryService,
 		private tagService: TagService,
 		private ingredientService: IngredientService,
+		private router: Router,
 	) {
 		this.toSave = new Recipe();
 	}
@@ -134,5 +136,16 @@ export class UpdateRecipeComponent {
 				console.error("Error uploading file:", error);
 			},
 		);
+	}
+	deleteRecipe() {
+		this.recipeService.deleteRecipe(this.oldRecipe.id ?? 0).subscribe(
+			(response) => {
+				console.log("Recipe deleted successfully:", response);
+			},
+			(error) => {
+				console.error("Error deleting recipe:", error);
+			},
+		);
+		this.router.navigate(["/dashboard/recipes"]);
 	}
 }

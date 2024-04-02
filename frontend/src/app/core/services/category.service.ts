@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Category } from "../models/category";
-import { Observable } from "rxjs"; // Add missing import
+import { Observable } from "rxjs";
 @Injectable({
 	providedIn: "root",
 })
@@ -12,5 +12,12 @@ export class CategoryService {
 
 	getCategories(): Observable<Category[]> {
 		return this.http.get<Category[]>(this.apiUrl);
+	}
+
+	saveCategory(category: Category): Observable<Category> {
+		return this.http.post<Category>(this.apiUrl, category);
+	}
+	uploadFile(formData: FormData): Observable<any> {
+		return this.http.post<any>(this.apiUrl + "/upload", formData);
 	}
 }

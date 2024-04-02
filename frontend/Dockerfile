@@ -1,32 +1,13 @@
-# Use the official Node.js image as the base image
-FROM node:18.18.2 as build
-
-# Set the working directory
-WORKDIR /app
-
-# Copy package.json and package-lock.json to the working directory
+# Stage 1: Build the Angular application
+FROM node:12.14.0 AS build
+WORKDIR /usr/src/app
 COPY package*.json ./
-
-# Install dependencies
-RUN npm install 
-
-# Copy the entire project to the working directory
+RUN npm install
 COPY . .
+RUN npm run build
 
-# Build the Angular app
-RUN npm run build 
-
-# Use a lightweight Nginx image to serve the Angular app
-FROM nginx:stable
-
-# COPY nginx-custom.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /app/dist/aftas/browser/ /usr/share/nginx/html
-
-# Copy the built Angular app to the Nginx public directory
-# COPY --from=build /app/dist/AFTAS-Angular /usr/share/nginx/html
-
-# Expose port 80
+# Stage 2: Serve the built Angular application using Nginx
+FROM nginx:alpine
+COPY --from=build /usr/src/app/dist /usr/share/nginx/html
 EXPOSE 80
-
-# Command to run Nginx
-# CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
