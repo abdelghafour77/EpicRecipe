@@ -6,7 +6,9 @@ import org.example.recipeservice.dtos.requests.RequestCategory;
 import org.example.recipeservice.dtos.responses.ResponseCategory;
 import org.example.recipeservice.services.CategoryService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -18,6 +20,7 @@ public class CategoryController {
 
     private final CategoryService service;
 
+//    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping()
     public ResponseEntity<List<ResponseCategory>> getCategories() {
         return ResponseEntity.ok().body(service.getAllCategories());
@@ -31,6 +34,13 @@ public class CategoryController {
     @PostMapping("/save")
     public ResponseEntity<ResponseCategory> saveCategory(@RequestBody RequestCategory category) {
         return ResponseEntity.ok().body(service.saveCategory(category));
+    }
+
+    @PostMapping("/upload")
+    public void uploadImage(@RequestParam("image") MultipartFile imageFile,
+                            @RequestParam("categoryId") String categoryId,
+                            @RequestParam("fileName") String fileName) {
+        service.uploadImage(imageFile, categoryId, fileName);
     }
     
     @PutMapping("{id}/update")

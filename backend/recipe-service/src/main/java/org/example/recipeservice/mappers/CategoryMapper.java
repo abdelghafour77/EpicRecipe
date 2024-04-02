@@ -11,6 +11,7 @@ public class CategoryMapper {
         return ResponseCategory.builder()
                 .id(category.getId())
                 .name(category.getName())
+                .image(category.getImage())
                 .build();
     }
 
@@ -18,6 +19,7 @@ public class CategoryMapper {
         return Category.builder()
                 .id(requestCategory.getId())
                 .name(requestCategory.getName())
+                .image(requestCategory.getImage())
                 .build();
 
     }
