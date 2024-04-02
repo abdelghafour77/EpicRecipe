@@ -19,6 +19,8 @@ public class Category {
 
     private String name;
 
+    private String image;
+
 //    @OneToMany(mappedBy = "category")
 //    private List<Recipe> recipes;
 
