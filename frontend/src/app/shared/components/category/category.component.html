@@ -1,6 +1,6 @@
 <h1 class="text-center text-2xl font-bold text-black">Popular Categories</h1>
 <div class="flex-no-wrap scrolling-touch mb-8 flex items-start gap-4 overflow-x-scroll p-8 scrollbar-default" id="categories">
-	@for (category of categories; track $index) {
+	@for (category of categories; track $index) { @if ($index <9) {
 	<div class="cat-card flex h-64 shrink-0 flex-col justify-evenly">
 		<div class="mx-auto flex h-32 w-32 items-center justify-center rounded-[50%] bg-lightgoldenrodyellow">
 			<img class="h-28 w-28 rounded-full object-cover" alt="" [src]="['assets/public/' + category.image]" />
@@ -8,8 +8,8 @@
 		<div>
 			<div class="text-center font-semibold text-gray-700">{{ category.name }}</div>
 			<!-- TODO: calculate total of recipies of each category -->
-			<div class="text-center text-sm font-thin">(26 recipe)</div>
+			<div class="text-center text-sm font-thin">({{ getRandomNumber() }} recipe)</div>
 		</div>
 	</div>
-	}
+	} }
 </div>

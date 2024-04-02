@@ -42,7 +42,10 @@
 			data-dropdown-toggle="user-dropdown"
 			data-dropdown-placement="bottom">
 			<span class="sr-only">Open user menu</span>
-			<img class="h-10 w-10 rounded-full" src="https://ui-avatars.com/api/?name={{ profile.firstName }}+{{ profile.lastName }}" alt="user photo" />
+			<img
+				class="h-10 w-10 rounded-full"
+				src="https://api.dicebear.com/8.x/pixel-art/svg?seed={{ profile.firstName }}{{ profile.lastName }}"
+				alt="user photo" />
 		</button>
 		<!-- Dropdown menu -->
 		<div
