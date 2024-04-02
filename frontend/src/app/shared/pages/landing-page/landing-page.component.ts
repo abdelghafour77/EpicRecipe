@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Flowbite } from "app/core/config/flowbiteConfig";
 import { Category } from "app/core/models/category";
 import { LandingPage } from "app/core/models/landing-page";
 import { Recipe } from "app/core/models/recipe";
@@ -10,6 +11,7 @@ import { RecipeService } from "app/core/services/recipe.service";
 	templateUrl: "./landing-page.component.html",
 	styleUrl: "./landing-page.component.css",
 })
+@Flowbite()
 export class LandingPageComponent implements OnInit {
 	landingPage: LandingPage = new LandingPage();
 	categories: Category[] = [];

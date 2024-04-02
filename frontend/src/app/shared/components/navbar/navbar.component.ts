@@ -23,8 +23,6 @@ export class NavbarComponent implements OnInit {
 			this.profile = profile;
 			const roles: string[] = await this.keycloakService.getUserRoles();
 			this.userRoles = roles;
-			console.log("profile: " + this.profile);
-			console.log("roles: " + this.userRoles);
 		}
 	}
 
